@@ -33,6 +33,7 @@ return new class extends Migration {
             $table->integer('discount')->default(0);
             $table->text('image_url')->nullable();
             $table->integer('reviews_count')->default(0);
+            $table->boolean('is_best_seller')->default(false);
             $table->timestamps();
 
             $table->foreign('brand_id')->references('id')->on('brands');

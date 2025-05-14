@@ -64,6 +64,34 @@
     </div>
 </section>
 
+<!-- Mais Vendidos -->
+<section class="mb-5">
+    <h2 class="mb-4 text-center">Mais Vendidos</h2>
+    <div class="row">
+        @foreach($topProducts as $product)
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="badge bg-success position-absolute" style="top: 0.5rem; right: 0.5rem;">Mais Vendido</div>
+                <img src="{{ $product->image_url }}" class="card-img-top" alt="{{ $product->name }}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ $product->name }}</h5>
+                    <p class="card-text flex-grow-1">{{ $product->short_description }}</p>
+                    <div class="d-flex justify-content-between align-items-center mt-auto">
+                        <div>
+                            <span class="text-decoration-line-through text-muted me-2">R$ {{ number_format($product->price, 2, ',', '.' )}}</span>
+                            <span class="fw-bold text-danger">R$ {{ number_format($product->discounted_price, 2, ',', '.' )}}</span>
+                        </div>
+                        <button class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-shopping-cart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</section>
+
 <!-- Categorias -->
 <section class="mb-5">
     <h2 class="mb-4 text-center">Nossas Categorias</h2>
