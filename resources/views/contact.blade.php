@@ -3,6 +3,7 @@
 @section('title', 'Contato - ElectroHome')
 
 @section('content')
+<div style="margin-top: 80px;"></div>
     <div class="row mb-4">
         <div class="col-md-6">
             <h1 class="display-6">Entre em Contato</h1>

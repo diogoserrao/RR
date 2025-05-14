@@ -3,6 +3,7 @@
 @section('title', 'Catálogo de Produtos - ElectroHome')
 
 @section('content')
+<div style="margin-top: 80px;"></div>
 <div class="row mb-4">
     <div class="col-md-6">
         <h1 class="display-6">Catálogo de Produtos</h1>
@@ -24,40 +25,43 @@
                 <h5 class="mb-0">Filtrar</h5>
             </div>
             <div class="card-body">
-                <h6 class="card-title">Categorias</h6>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a href="{{ route('catalog.index') }}" class="text-decoration-none">Todos</a></li>
-                    @foreach($categories as $category)
-                    <li class="mb-2">
-                        <a href="{{ route('catalog.category', Str::slug($category)) }}" class="text-decoration-none">
-                            {{ $category->name }}
-                        </a>
-                    </li>
-                    @endforeach
-                </ul>
 
-                <hr>
+                <form method="GET" action="{{ route('catalog.index') }}">
+                    <h6 class="card-title">Categorias</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <input type="radio" name="category" value="" id="cat_all" onchange="this.form.submit()" {{ request('category') ? '' : 'checked' }}>
+                            <label for="cat_all" class="ms-1">Todos</label>
+                        </li>
+                        @foreach($categories as $category)
+                        <li class="mb-2">
+                            <input type="radio" name="category" value="{{ $category->id }}" id="cat_{{ $category->id }}" onchange="this.form.submit()" {{ request('category') == $category->id ? 'checked' : '' }}>
+                            <label for="cat_{{ $category->id }}" class="ms-1">{{ $category->name }}</label>
+                        </li>
+                        @endforeach
+                    </ul>
+                    <!-- Você pode adicionar filtros de marcas e preço aqui também -->
 
-                <h6 class="card-title">Marcas</h6>
-                @foreach($brands as $brand)
-                <div class="form-check mb-2">
-                    <input class="form-check-input" type="checkbox" id="brand{{ $brand->id }}">
-                    <label class="form-check-label" for="brand{{ $brand->id }}">{{ $brand->name }}</label>
-                </div>
-                @endforeach
-
-                <hr>
-
-                <h6 class="card-title">Preço</h6>
-                <div class="range-slider mb-3">
-                    <input type="range" class="form-range" min="0" max="10000" step="100" id="priceRange">
-                    <div class="d-flex justify-content-between">
-                        <span>R$ 0</span>
-                        <span>R$ 10.000</span>
+                    <h6 class="card-title">Marcas</h6>
+                    @foreach($brands as $brand)
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox" name="brands[]" value="{{ $brand->id }}" id="brand{{ $brand->id }}"
+                            {{ (is_array(request('brands')) && in_array($brand->id, request('brands'))) ? 'checked' : '' }}
+                            onchange="this.form.submit()">
+                        <label class="form-check-label" for="brand{{ $brand->id }}">{{ $brand->name }}</label>
                     </div>
-                </div>
+                    @endforeach
 
-                <button class="btn btn-primary w-100">Aplicar Filtros</button>
+                    <hr>
+
+                    <h6 class="card-title">Preço</h6>
+                    <div class="mb-3 d-flex align-items-center">
+                        <input type="number" class="form-control me-2" name="price_min" placeholder="Mín" min="0" value="{{ request('price_min') }}">
+                        <span class="mx-1">a</span>
+                        <input type="number" class="form-control ms-2" name="price_max" placeholder="Máx" min="0" value="{{ request('price_max') }}">
+                    </div>
+                    <button class="btn btn-primary w-100" type="submit">Aplicar Filtros</button>
+                </form>
             </div>
         </div>
 
@@ -91,16 +95,18 @@
         <div>
             Mostrando <span class="fw-bold">{{ $products->firstItem() ?? 0 }}-{{ $products->lastItem() ?? 0 }}</span> de <span class="fw-bold">{{ $products->total() }}</span> produtos
         </div>
-        <div class="d-flex align-items-center">
-            <label for="sortBy" class="me-2 mb-0">Ordenar por:</label>
-            <select class="form-select form-select-sm" style="width: auto;" id="sortBy">
-                <option selected>Relevância</option>
-                <option>Menor Preço</option>
-                <option>Maior Preço</option>
-                <option>Mais Vendidos</option>
-                <option>Melhor Avaliados</option>
-            </select>
-        </div>
+        <form method="GET" action="{{ route('catalog.index') }}" id="filterForm">
+            <div class="d-flex align-items-center mt-3">
+                <label for="sortBy" class="me-2 mb-0">Ordenar por:</label>
+                <select class="form-select form-select-sm" style="width: auto;" id="sortBy" name="sort" onchange="document.getElementById('filterForm').submit()">
+                    <option value="" {{ request('sort') == '' ? 'selected' : '' }}>Relevância</option>
+                    <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Menor Preço</option>
+                    <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Maior Preço</option>
+                    <option value="best_sellers" {{ request('sort') == 'best_sellers' ? 'selected' : '' }}>Mais Vendidos</option>
+                    <option value="top_rated" {{ request('sort') == 'top_rated' ? 'selected' : '' }}>Melhor Avaliados</option>
+                </select>
+            </div>
+        </form>
     </div>
 
     <div class="row">

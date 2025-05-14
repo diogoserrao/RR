@@ -3,6 +3,7 @@
 @section('title', 'Sobre Nós - ElectroHome')
 
 @section('content')
+<div style="margin-top: 80px;"></div>
     <div class="row mb-5">
         <div class="col-md-6">
             <h1 class="display-4">Sobre a ElectroHome</h1>
@@ -20,7 +21,7 @@
 
     <div class="row mb-5">
         <div class="col-lg-6 mb-4 mb-lg-0">
-            <img src="https://via.placeholder.com/800x600?text=Loja+ElectroHome" alt="Nossa Loja" class="img-fluid rounded shadow">
+            <img src="https://media.timeout.com/images/105396679/1536/1152/image.jpg" alt="Nossa Loja" class="img-fluid rounded shadow">
         </div>
         <div class="col-lg-6">
             <h2 class="mb-4">Nossa História</h2>
@@ -45,7 +46,7 @@
     <div class="bg-light p-5 rounded mb-5">
         <div class="row">
             <div class="col-md-4 text-center mb-4 mb-md-0">
-                <div class="display-4 text-primary mb-2">15+</div>
+                <div class="display-4 text-primary mb-2">30+</div>
                 <h4>Anos no mercado</h4>
             </div>
             <div class="col-md-4 text-center mb-4 mb-md-0">

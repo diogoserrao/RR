@@ -31,7 +31,7 @@ return new class extends Migration {
             $table->decimal('price', 10, 2);
             $table->decimal('discounted_price', 10, 2)->nullable();
             $table->integer('discount')->default(0);
-            $table->string('image_url')->nullable();
+            $table->text('image_url')->nullable();
             $table->integer('reviews_count')->default(0);
             $table->timestamps();
 

@@ -1,9 +1,26 @@
 // Função para inicializar componentes
 document.addEventListener('DOMContentLoaded', function() {
-    // Ativar tooltips
+     // Ativar tooltips e popovers (teu código existente)
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
+    tooltipTriggerList.map(function (tooltipTriggerEl) { /* ... */ });
+
+    // Navbar preta: esconder ao descer, mostrar ao subir
+    let lastScrollTop = window.scrollY;
+    const navbar = document.querySelector('.navbar.bg-dark');
+
+    window.addEventListener('scroll', function() {
+        if (!navbar) return;
+        let st = window.scrollY;
+        if (st > lastScrollTop && st > 100) {
+            // Scroll para baixo: esconde
+            navbar.style.transform = 'translateY(-100%)';
+            navbar.style.transition = 'transform 0.3s';
+        } else {
+            // Scroll para cima: mostra
+            navbar.style.transform = 'translateY(0)';
+            navbar.style.transition = 'transform 0.3s';
+        }
+        lastScrollTop = st <= 0 ? 0 : st;
     });
     
     // Ativar popovers

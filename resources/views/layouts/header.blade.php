@@ -1,4 +1,4 @@
-<header class="bg-primary text-white py-3">
+<header class="bg-primary text-white py-3" style="position:fixed; top:0; left:0; width:100%; z-index:1040;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6">

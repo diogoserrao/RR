@@ -2,6 +2,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
+    padding-top: 104px; 
 }
 
 a {
@@ -114,6 +115,36 @@ footer a:hover {
 
 .page-link {
     color: #0d6efd;
+}
+
+/*************************Slide de Marcas*******************************/
+.brand-slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #fff;
+}
+
+.brand-slider {
+    display: flex;
+    align-items: center;
+    animation: brand-scroll 30s linear infinite;
+}
+
+.brand-item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes brand-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Responsividade */

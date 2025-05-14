@@ -24,11 +24,11 @@
             <div class="col-md-3 mb-4 mb-md-0">
                 <h5 class="text-uppercase mb-4">Categorias</h5>
                 <ul class="list-unstyled">
-                    <li class="mb-2"><a href="{{ route('catalog.category', 'geladeiras') }}" class="text-white">Geladeiras</a></li>
-                    <li class="mb-2"><a href="{{ route('catalog.category', 'fogões') }}" class="text-white">Fogões</a></li>
-                    <li class="mb-2"><a href="{{ route('catalog.category', 'lavadoras') }}" class="text-white">Lavadoras</a></li>
-                    <li class="mb-2"><a href="{{ route('catalog.category', 'microondas') }}" class="text-white">Microondas</a></li>
-                    <li><a href="{{ route('catalog.category', 'ar-condicionado') }}" class="text-white">Ar Condicionado</a></li>
+                    <li class="mb-2"><a href="{{ route('catalog.index') }}" class="text-white">Geladeiras</a></li>
+                    <li class="mb-2"><a href="{{ route('catalog.index') }}" class="text-white">Fogões</a></li>
+                    <li class="mb-2"><a href="{{ route('catalog.index') }}" class="text-white">Lavadoras</a></li>
+                    <li class="mb-2"><a href="{{ route('catalog.index') }}" class="text-white">Microondas</a></li>
+                    <li><a href="{{ route('catalog.index') }}" class="text-white">Ar Condicionado</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
