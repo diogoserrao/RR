@@ -1,25 +1,35 @@
 @extends('layouts.app')
 
-@section('title', 'ElectroHome - Eletrodomésticos Premium')
+@section('title', 'ElectroHome - Sua loja de eletrodomésticos')
 
 @section('content')
-<div class="hero-section mb-5">
-    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- Carrossel de Destaques -->
+    <div id="mainCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+        </div>
         <div class="carousel-inner rounded">
             <div class="carousel-item active">
-                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Promoção de Geladeiras">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2>Promoção de Geladeiras</h2>
-                    <p>Até 30% de desconto nas melhores marcas</p>
-                    <a href="/catalogo/refrigerators" class="btn btn-primary">Comprar Agora</a>
+                <img src="https://via.placeholder.com/1200x400?text=Promoção+de+Geladeiras" class="d-block w-100" alt="Promoção de Geladeiras">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                    <h5>Geladeiras com até 30% off</h5>
+                    <p>As melhores marcas com os melhores preços</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Linha Premium">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2>Linha Premium</h2>
-                    <p>Os melhores eletrodomésticos para sua casa</p>
-                    <a href="/catalogo" class="btn btn-primary">Ver Catálogo</a>
+                <img src="https://via.placeholder.com/1200x400?text=Ofertas+de+Microondas" class="d-block w-100" alt="Ofertas de Microondas">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                    <h5>Microondas com 20% de desconto</h5>
+                    <p>Frete grátis para toda a região</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1200x400?text=Novidades+em+Ar+Condicionado" class="d-block w-100" alt="Novidades em Ar Condicionado">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+                    <h5>Ar Condicionado Inverter</h5>
+                    <p>Economize até 60% na conta de luz</p>
                 </div>
             </div>
         </div>
@@ -30,112 +40,101 @@
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
-</div>
 
-<section class="featured-categories mb-5">
-    <h2 class="text-center mb-4">Nossas Categorias</h2>
-    <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card category-card h-100">
-                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Geladeiras">
-                <div class="card-body text-center">
-                    <h3 class="card-title">Geladeiras</h3>
-                    <a href="/catalogo/refrigerators" class="btn btn-outline-primary">Ver Produtos</a>
+    <!-- Destaques -->
+    <section class="mb-5">
+        <h2 class="mb-4 text-center">Produtos em Destaque</h2>
+        <div class="row">
+            @for($i = 1; $i <= 4; $i++)
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="badge bg-danger position-absolute" style="top: 0.5rem; right: 0.5rem;">Promoção</div>
+                    <img src="https://via.placeholder.com/300x300?text=Produto+{{ $i }}" class="card-img-top" alt="Produto {{ $i }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Produto {{ $i }}</h5>
+                        <p class="card-text">Descrição breve do produto {{ $i }} com suas principais características.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-decoration-line-through text-muted me-2">R$ {{ number_format(rand(2000, 5000), 2, ',', '.' )}}</span>
+                                <span class="fw-bold">R$ {{ number_format(rand(1000, 1999), 2, ',', '.' )}}</span>
+                            </div>
+                            <button class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            @endfor
         </div>
-        <div class="col-md-4">
-            <div class="card category-card h-100">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Lavadoras">
-                <div class="card-body text-center">
-                    <h3 class="card-title">Lavadoras</h3>
-                    <a href="/catalogo/washing-machines" class="btn btn-outline-primary">Ver Produtos</a>
-                </div>
-            </div>
+        <div class="text-center mt-3">
+            <a href="{{ route('catalog.index') }}" class="btn btn-primary">Ver Todos os Produtos</a>
         </div>
-        <div class="col-md-4">
-            <div class="card category-card h-100">
-                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Fornos">
-                <div class="card-body text-center">
-                    <h3 class="card-title">Fornos</h3>
-                    <a href="/catalogo/ovens" class="btn btn-outline-primary">Ver Produtos</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="featured-products mb-5">
-    <h2 class="text-center mb-4">Produtos em Destaque</h2>
-    {{-- <div class="row g-4">
-        @foreach($featuredProducts as $product)
-        <div class="col-md-3">
-            <div class="card product-card h-100">
-                <div class="badge bg-danger position-absolute" style="top: 10px; right: 10px;">-{{ $product->discount }}%</div>
-    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top" alt="{{ $product->name }}">
-    <div class="card-body">
-        <h5 class="card-title">{{ $product->name }}</h5>
-        <div class="product-price mb-2">
-            <span class="text-muted text-decoration-line-through">R$ {{ number_format($product->price, 2, ',', '.') }}</span>
-            <span class="fw-bold text-primary"> R$ {{ number_format($product->discounted_price, 2, ',', '.') }}</span>
+    <!-- Categorias -->
+    <section class="mb-5">
+        <h2 class="mb-4 text-center">Nossas Categorias</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card category-card">
+                    <a href="{{ route('catalog.category', 'geladeiras') }}" class="text-decoration-none">
+                        <img src="https://via.placeholder.com/400x300?text=Geladeiras" class="card-img" alt="Geladeiras">
+                        <div class="card-img-overlay d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
+                            <h3 class="text-white">Geladeiras</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card category-card">
+                    <a href="{{ route('catalog.category', 'fogões') }}" class="text-decoration-none">
+                        <img src="https://via.placeholder.com/400x300?text=Fogões" class="card-img" alt="Fogões">
+                        <div class="card-img-overlay d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
+                            <h3 class="text-white">Fogões</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card category-card">
+                    <a href="{{ route('catalog.category', 'lavadoras') }}" class="text-decoration-none">
+                        <img src="https://via.placeholder.com/400x300?text=Lavadoras" class="card-img" alt="Lavadoras">
+                        <div class="card-img-overlay d-flex align-items-center justify-content-center bg-dark bg-opacity-50">
+                            <h3 class="text-white">Lavadoras</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="product-actions d-flex justify-content-between">
-            <a href="/product/{{ $product->id }}" class="btn btn-sm btn-outline-secondary">Detalhes</a>
-            <button class="btn btn-sm btn-primary">Comprar</button>
-        </div>
-    </div>
-    </div>
-    </div>
-    @endforeach
-    </div>--}}
-    <div class="text-center mt-4">
-        <a href="/catalogo" class="btn btn-outline-primary">Ver Todos os Produtos</a>
-    </div>
-</section>
+    </section>
 
-<section class="brands-section mb-5">
-    <h2 class="text-center mb-4">Marcas Parceiras</h2>
-    <div class="row g-4 align-items-center">
-        <div class="col"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/LG_logo_%282015%29.svg/320px-LG_logo_%282015%29.svg.png" alt="LG" class="img-fluid"></div>
-        <div class="col"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/320px-Samsung_Logo.svg.png" alt="Samsung" class="img-fluid"></div>
-        <div class="col"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Whirlpool_Corporation_logo_2017.svg/320px-Whirlpool_Corporation_logo_2017.svg.png" alt="Whirlpool" class="img-fluid"></div>
-        <div class="col"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bosch-logotype.svg/320px-Bosch-logotype.svg.png" alt="Bosch" class="img-fluid"></div>
-        <div class="col"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Electrolux_Logo.svg/320px-Electrolux_Logo.svg.png" alt="Electrolux" class="img-fluid"></div>
-    </div>
-</section>
-
-<section class="benefits-section bg-light py-4 mb-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-3">
-                <div class="benefit-item">
-                    <i class="fas fa-truck fa-2x text-primary mb-2"></i>
-                    <h5>Frete Grátis</h5>
-                    <p class="mb-0">Para compras acima de R$ 999</p>
-                </div>
+    <!-- Sobre Nós -->
+    <section class="mb-5 bg-light p-4 rounded">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2>Sobre a ElectroHome</h2>
+                <p>A ElectroHome é uma loja especializada em eletrodomésticos, oferecendo os melhores produtos das principais marcas do mercado. Com mais de 15 anos de experiência, nos destacamos pelo atendimento personalizado e pós-venda de qualidade.</p>
+                <p>Nossa missão é proporcionar conforto e praticidade para seu lar, com produtos que facilitam seu dia a dia e tornam sua vida mais simples.</p>
+                <a href="{{ route('about') }}" class="btn btn-outline-primary">Saiba Mais</a>
             </div>
-            <div class="col-md-3">
-                <div class="benefit-item">
-                    <i class="fas fa-credit-card fa-2x text-primary mb-2"></i>
-                    <h5>Parcele em até 12x</h5>
-                    <p class="mb-0">Sem juros no cartão</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="benefit-item">
-                    <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
-                    <h5>Garantia Estendida</h5>
-                    <p class="mb-0">Até 3 anos disponível</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="benefit-item">
-                    <i class="fas fa-store fa-2x text-primary mb-2"></i>
-                    <h5>Retire na Loja</h5>
-                    <p class="mb-0">Compre online e retire</p>
-                </div>
+            <div class="col-md-6">
+                <img src="https://via.placeholder.com/600x400?text=Loja+ElectroHome" alt="Loja ElectroHome" class="img-fluid rounded">
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- Marcas Parceiras -->
+    <section class="mb-5">
+        <h2 class="mb-4 text-center">Nossas Marcas</h2>
+        <div class="row g-4">
+            @foreach(['Brastemp', 'Electrolux', 'Consul', 'Samsung', 'LG', 'Philco'] as $brand)
+            <div class="col-4 col-md-2 text-center">
+                <div class="p-3 border rounded bg-white">
+                    <img src="https://via.placeholder.com/150x80?text={{ $brand }}" alt="{{ $brand }}" class="img-fluid">
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </section>
 @endsection

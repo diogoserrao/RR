@@ -1,61 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+1. Estrutura de Rotas
+Arquivo: web.php
+Função: Define as rotas principais do site.
+/ → Página inicial (home.index)
+/sobre → Sobre nós (home.about)
+/catalogo → Catálogo principal e categorias/produtos (catalog.index, catalog.category, catalog.product)
+/contato → Página de contato (contact)
+Observação: As rotas de catálogo usam parâmetros para categoria e id do produto, simulando dados no próprio arquivo de rotas.
+2. Layouts e Componentes Globais
+Arquivo principal: app.blade.php
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Inclui: Cabeçalho (header.blade.php), navegação (navigation.blade.php), rodapé (footer.blade.php)
+Usa: Bootstrap, FontAwesome, CSS e JS próprios
+@yield('content'): Onde o conteúdo de cada página é inserido
+Componentes:
 
-## About Laravel
+header.blade.php: Logo, pesquisa, ícones de usuário/carrinho
+navigation.blade.php: Menu principal com links para Home, Categorias, Sobre, Contato
+footer.blade.php: Informações, links rápidos, categorias, contato, redes sociais
+3. Views de Páginas
+Página Inicial: index.blade.php
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Carrossel de destaques
+Produtos em destaque (simulados)
+Categorias principais
+Sobre a loja (resumido)
+Marcas parceiras
+Sobre Nós: about.blade.php
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+História da loja
+Missão, valores
+Equipa (simulada com array)
+Catálogo: index.blade.php
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Filtros por categoria, marca, preço (simulados)
+Listagem de produtos (simulados com for loop)
+Paginação (simulada)
+Categoria: category.blade.php
 
-## Learning Laravel
+Mostra produtos de uma categoria específica (simulados)
+Filtros e paginação
+Produto: product.blade.php
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Detalhes do produto (dados simulados vindos da rota)
+Imagens, preço, avaliações, especificações, avaliações de clientes, produtos relacionados
+Contato: contact.blade.php
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Formulário de contato
+Informações de contato e mapa
+4. Recursos Estáticos
+CSS: style.css
+Estilos personalizados para layout, cards, carrossel, responsividade, etc.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+JS: script.js
+Scripts para interatividade (carrossel, formulário de contato, abas de produto, etc).
 
-## Laravel Sponsors
+5. Migrações e Seeders
+Migração: Cria tabelas para marcas, categorias, produtos, equipa, depoimentos.
+Seeder: Popularia essas tabelas com dados reais (caso use base de dados).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+6. Como funciona a renderização
+O layout principal (app.blade.php) carrega o cabeçalho, navegação e rodapé em todas as páginas.
+Cada view de página (home/index, catalog/index, etc) preenche a secção @section('content').
+Os dados dos produtos/categorias são simulados em arrays ou loops, mas podem ser facilmente trocados para vir da base de dados.
+As rotas usam funções anônimas para simular dados, mas podem ser trocadas por controllers e Eloquent.
+Resumo Visual
 
-### Premium Partners
+resources/views/
+├── layouts/
+│   ├── app.blade.php
+│   ├── header.blade.php
+│   ├── navigation.blade.php
+│   └── footer.blade.php
+├── home/
+│   ├── index.blade.php
+│   └── about.blade.php
+├── catalog/
+│   ├── index.blade.php
+│   ├── category.blade.php
+│   └── product.blade.php
+├── contact.blade.php
+└── cart.blade.php (vazio)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Resumo Final
+Layout global: app.blade.php
+Componentes globais: header, navigation, footer
+Views: home, catálogo, produto, sobre, contato
+Rotas: web.php, simulando dados
+Estático: CSS/JS próprios
+Pronto para migrar para base de dados: só trocar arrays por queries Eloquent
