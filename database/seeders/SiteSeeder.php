@@ -29,6 +29,9 @@ class SiteSeeder extends Seeder
             ['name' => 'Forno', 'slug' => 'ovens'],
             ['name' => 'Ar Condicionado', 'slug' => 'air-conditioners'],
             ['name' => 'Pequenos Eletrodomésticos', 'slug' => 'small-appliances'],
+            ['name' => 'Televisões', 'slug' => 'televisions'],           
+            ['name' => 'Cafeteiras', 'slug' => 'coffee-makers'],             
+            ['name' => 'Aspiradores', 'slug' => 'vacuum-cleaners'],
         ];
         DB::table('categories')->insert($categories);
 
@@ -104,6 +107,48 @@ class SiteSeeder extends Seeder
                 'reviews_count' => 15,
                 'is_best_seller' => true,
             ],
+            // TV (Samsung)
+            [
+                'name' => 'TV Samsung 55" QLED 4K',
+                'brand_id' => 2,
+                'category_id' => 6,
+                'short_description' => 'TV inteligente com cores vibrantes.',
+                'description' => 'TV Samsung 55" QLED 4K UHD, Smart TV, 3 HDMI, 2 USB, HDR, Alexa integrada',
+                'price' => 4200.00,
+                'discounted_price' => 3780.00,
+                'discount' => 10,
+                'image_url' => 'https://www.electrical-deals.co.uk/media/catalog/product/cache/1/image/1800x/040ec09b1e35df139433887a97daa66f/Q/E/QE55Q85R-left.jpg',
+                'reviews_count' => 24,
+                'is_best_seller' => true,
+            ],
+            // Cafeteira (Philips)
+            [
+                'name' => 'Cafeteira Philips Walita',
+                'brand_id' => 7,
+                'category_id' => 7,
+                'short_description' => 'Cafeteira prática e eficiente.',
+                'description' => 'Cafeteira Philips Walita 110V, sistema de filtro permanente, jarra térmica',
+                'price' => 180.00,
+                'discounted_price' => 153.00,
+                'discount' => 15,
+                'image_url' => 'https://carrefourbr.vtexassets.com/arquivos/ids/107384021/cafeteira-express-ep5441-philips-pt-220v-2.jpg?v=638151805720370000',
+                'reviews_count' => 18,
+                'is_best_seller' => false,
+            ],
+            // Aspirador de Pó (Electrolux)
+            [
+                'name' => 'Aspirador de Pó Electrolux',
+                'brand_id' => 3,
+                'category_id' => 8,
+                'short_description' => 'Aspirador potente e silencioso.',
+                'description' => 'Aspirador de Pó Electrolux 1400W, ciclônico, filtro HEPA, 2L de capacidade',
+                'price' => 450.00,
+                'discounted_price' => 405.00,
+                'discount' => 10,
+                'image_url' => 'https://images.colombo.com.br/produtos/4390883/4390883_Aspirador_de_Po_e_Agua_Electrolux_Flex_Azul_FLEXN_3011BCBR406_12090814_z.jpg',
+                'reviews_count' => 9,
+                'is_best_seller' => true,
+            ],
         ];
         DB::table('products')->insert($products);
 
@@ -118,7 +163,7 @@ class SiteSeeder extends Seeder
 
         // Depoimentos (Fotos de clientes - Unsplash)
         $testimonials = [
-           [
+            [
                 'client_name' => 'Roberto Almeida',
                 'city' => 'Lisboa',
                 'photo_url' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e',

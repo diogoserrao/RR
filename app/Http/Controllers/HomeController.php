@@ -13,7 +13,7 @@ class HomeController extends Controller
         $featuredProducts = Product::with('brand', 'category')->take(4)->get();
         $brands = Brand::all();
         $categories = Category::all();
-        $topProducts = Product::where('is_best_seller', true)->take(3)->get(); // Só 3 produtos
+        $topProducts = Product::where('is_best_seller', true)->take(8)->get(); // Só 3 produtos
         return view('home.index', compact('featuredProducts', 'brands', 'categories', 'topProducts'));
     }
 
