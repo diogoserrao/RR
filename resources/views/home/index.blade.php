@@ -64,7 +64,9 @@
         @endforeach
     </div>
     <div class="text-center mt-3">
-        <a href="{{ route('catalog.index', ['promotions' => 1]) }}">Promoções</a>
+        <a href="{{ route('catalog.index', ['promotions' => 1]) }}" class="btn-ver-todos" style="background:#dc3545; border:none;">
+            Promoções
+        </a>
     </div>
 </section>
 

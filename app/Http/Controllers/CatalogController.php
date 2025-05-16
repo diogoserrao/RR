@@ -20,12 +20,15 @@ class CatalogController extends Controller
             }
         }
 
-        if ($request->has('no_promotions') && $request->no_promotions == 1) {
+        // Filtro de promoções
+        if ($request->has('promotions') && $request->promotions == 1) {
+            $query->where('discount', '>', 0)->where('discounted_price', '>', 0);
+        } elseif ($request->has('no_promotions') && $request->no_promotions == 1) {
             $query->where(function ($q) {
                 $q->where('discount', 0)->orWhere('discounted_price', 0);
             });
         }
-        
+
         // Filtro de pesquisa
         if ($request->brands) {
             $query->whereIn('brand_id', $request->brands);
@@ -44,7 +47,7 @@ class CatalogController extends Controller
             $query->where('discount', '>', 0)->where('discounted_price', '>', 0);
         }
 
-        
+
 
         switch ($request->sort) {
             case 'price_asc':

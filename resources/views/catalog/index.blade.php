@@ -42,8 +42,8 @@
                     <h6 class="filter-title">Promoções</h6>
                     <ul class="filter-list">
                         <li>
-                            <input type="checkbox" name="no_promotions" value="1" id="promo_toggle"
-                                onchange="this.form.submit()" {{ request('no_promotions') == 1 ? 'checked' : '' }}>
+                            <input type="checkbox" name="promotions" value="1" id="promo_toggle"
+                                onchange="this.form.submit()" {{ request('promotions') == 1 ? 'checked' : '' }}>
                             <label for="promo_toggle">Promoções</label>
                         </li>
                     </ul>
@@ -138,6 +138,8 @@
             <div class="catalog-product-col">
                 <a href="{{ route('catalog.product', ['category' => $product->category->slug, 'id' => $product->id]) }}" class="product-card-link">
                     <div class="product-card">
+
+
                         <div class="product-img-wrapper">
                             <img src="{{ $product->image_url }}" class="product-img" alt="{{ $product->name }}">
                             <div class="product-actions">
@@ -171,8 +173,10 @@
                                 <div>
                                     @if($product->discount > 0)
                                     <span class="product-old-price">{{ number_format($product->price, 2, ',', '.') }} €</span>
-                                    @endif
                                     <div class="product-price"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</div>
+                                    @else
+                                    <div class="product-price"> {{ number_format($product->price, 2, ',', '.' )}} €</div>
+                                    @endif
                                 </div>
                                 <form action="{{ route('cart.add') }}" method="POST" style="display:inline;" onclick="event.stopPropagation();">
                                     @csrf
@@ -184,6 +188,8 @@
                                 </form>
                             </div>
                         </div>
+
+
                     </div>
                 </a>
             </div>
