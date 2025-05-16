@@ -14,7 +14,9 @@ class HomeController extends Controller
         $brands = Brand::all();
         $categories = Category::all();
         $topProducts = Product::where('is_best_seller', true)->take(8)->get(); // Só 3 produtos
-        return view('home.index', compact('featuredProducts', 'brands', 'categories', 'topProducts'));
+        $cart = session('cart', []);
+        $cartCount = array_sum(array_column($cart, 'quantity'));
+        return view('home.index', compact('featuredProducts', 'brands', 'categories', 'topProducts', 'cartCount'));
     }
 
     public function about()

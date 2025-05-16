@@ -2,120 +2,176 @@
 
 @section('title', $product['name'] . ' - ElectroHome')
 
+<head>
+    <!-- Bootstrap e CSS do produto -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="{{ asset('catalog/product.css') }}" rel="stylesheet">
+</head>
+
 @section('content')
-<div class="row mb-4">
-    <div class="col-md-6">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('catalog.index') }}">Catálogo</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('catalog.category', $product->category->slug) }}">{{ $product->category->name }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $product->name }}</li>
-            </ol>
-        </nav>
+<!-- Espaço para compensar o header fixo -->
+<div style="margin-top: 80px;"></div>
+
+<!-- Breadcrumb e botão voltar -->
+<div class="product-breadcrumb-row">
+    <nav aria-label="breadcrumb">
+        <ol class="product-breadcrumb">
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('catalog.index') }}">Catálogo</a></li>
+            <!-- Link para categoria filtrada -->
+            <li><a href="{{ route('catalog.category', $product->category->slug) }}">{{ $product->category->name }}</a></li>
+            <li class="active">{{ $product->name }}</li>
+        </ol>
+    </nav>
+    <a href="{{ route('catalog.index') }}" class="product-back-btn product-back-btn-main">
+        <i class="fas fa-arrow-left"></i> Voltar ao Catálogo
+    </a>
+</div>
+
+<!-- Linha principal do produto -->
+<div class="product-main-row">
+    <!-- Coluna esquerda: galeria de imagens e vídeo -->
+    <div class="product-main-col-left">
+        <div class="product-gallery">
+            <div class="product-gallery-main">
+                <img src="{{ $product->image_url }}" class="product-main-img" alt="{{ $product->name }}" id="mainProductImage">
+                <!-- Vídeo do produto (opcional) -->
+                <video id="mainProductVideo" class="product-main-video" controls style="display:none;">
+                    <source src="{{ $product->video_url ?? '' }}" type="video/mp4">
+                    Seu navegador não suporta vídeo.
+                </video>
+            </div>
+            <div class="product-gallery-thumbs">
+                <!-- Miniatura da imagem principal -->
+                <div class="product-thumb-col">
+                    <img src="{{ $product->image_url }}" class="product-thumb-img" alt="{{ $product->name }}" onclick="showMainMedia('img', '{{ $product->image_url }}')">
+                </div>
+                <!-- Miniaturas de imagens extra (exemplo) -->
+                @for($i = 1; $i <= 4; $i++)
+                    <div class="product-thumb-col">
+                    <img src="https://via.placeholder.com/150x150?text={{ $product->name }}+{{ $i }}" class="product-thumb-img" alt="{{ $product->name }} {{ $i }}" onclick="showMainMedia('img', 'https://via.placeholder.com/600x600?text={{ $product->name }}+{{ $i }}')">
+            </div>
+            @endfor
+            <!-- Miniatura do vídeo (se existir) -->
+            @if(!empty($product->video_url))
+            <div class="product-thumb-col">
+                <div class="product-thumb-video" onclick="showMainMedia('video')">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Vídeo</span>
+                </div>
+            </div>
+            @endif
+        </div>
     </div>
 </div>
 
-<div class="row mb-5">
-    <div class="col-md-6">
-        <div class="mb-3">
-            <img src="https://via.placeholder.com/600x600?text={{ $product['name'] }}" class="img-fluid rounded border" alt="{{ $product['name'] }}" id="mainProductImage">
+<!-- Coluna direita: informações do produto -->
+<div class="product-main-col-right">
+    <!-- Título do produto -->
+    <h1 class="product-title-main">{{ $product->name }}</h1>
+    <!-- Avaliação e stock -->
+    <div class="product-rating-stock-row">
+        <div class="product-rating">
+            <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </span>
+            <span class="product-rating-count">({{ $product->reviews_count }} avaliações)</span>
         </div>
-        <div class="row g-2">
-            @for($i = 1; $i <= 4; $i++)
-                <div class="col-3">
-                <img src="https://via.placeholder.com/150x150?text={{ $product['name'] }}+{{ $i }}" class="img-fluid rounded border cursor-pointer" alt="{{ $product['name'] }} {{ $i }}" onclick="document.getElementById('mainProductImage').src = this.src">
+        <div>
+            <span class="product-stock-badge">
+                <i class="fas fa-check-circle"></i> Em estoque
+            </span>
         </div>
-        @endfor
+    </div>
+    <!-- Preço e desconto -->
+    @if($product->discount > 0)
+    <div class="product-discount-row">
+        <span class="product-old-price">{{ number_format($product->price, 2, ',', '.') }} €</span>
+        <span class="product-discount-badge">-{{ $product->discount }}%</span>
+    </div>
+    @endif
+    <div class="product-price-main"> {{ number_format($product->discounted_price, 2, ',', '.') }} €</div>
+    <!-- Descrição curta -->
+    <div class="product-short-desc">
+        <p>{{ $product->short_description }}</p>
+    </div>
+    <!-- Metadados: marca e categoria -->
+    <div class="product-meta-row">
+        <div class="product-meta">
+            <strong>Marca:</strong>
+            <span>{{ $product->brand->name }}</span>
+        </div>
+        <div class="product-meta">
+            <strong>Categoria:</strong>
+            <!-- Link para catálogo filtrado pela categoria -->
+            <a href="{{ route('catalog.index', ['category' => $product->category->slug]) }}" class="categoria-link">
+                {{ $product->category->name }}
+            </a>
+        </div>
+    </div>
+    <!-- Benefícios do produto -->
+    <div class="product-benefits-row">
+        <div class="product-benefit"><i class="fas fa-truck"></i> Frete grátis para todo o país</div>
+        <div class="product-benefit"><i class="fas fa-shield-alt"></i> Garantia de 12 meses</div>
+        <div class="product-benefit"><i class="fas fa-credit-card"></i> Parcele em até 12x sem juros</div>
+    </div>
+    <!-- Linha de compra: quantidade, adicionar ao carrinho, favorito -->
+    <div class="product-buy-row">
+        <!-- Botões de quantidade -->
+        <div class="product-qty-group">
+            <button class="product-qty-btn" type="button" id="decrement">-</button>
+            <input type="text" class="product-qty-input" value="1" id="quantity">
+            <button class="product-qty-btn" type="button" id="increment">+</button>
+        </div>
+        <!-- Formulário para adicionar ao carrinho -->
+        <form action="{{ route('cart.add') }}" method="POST" style="display:inline;">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit" class="product-cart-btn">
+                <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+            </button>
+        </form>
+        <!-- Botão de favorito -->
+        <button class="product-fav-btn">
+            <i class="far fa-heart"></i>
+        </button>
+    </div>
+    <!-- Alerta de informação de entrega -->
+    <div class="product-info-alert">
+        <i class="fas fa-info-circle"></i> Entrega em 3-5 dias úteis para a maioria das regiões.
     </div>
 </div>
-
-<div class="row mb-5">
-    <div class="col-md-6">
-        <div class="mb-3">
-            <img src="{{ $product->image_url }}" class="img-fluid rounded border" alt="{{ $product->name }}" id="mainProductImage">
-        </div>
-    </div>
-    <div class="col-md-6">
-        <h1 class="mb-3">{{ $product->name }}</h1>
-        <div class="d-flex align-items-center mb-3">
-            <div class="me-3">
-                <span class="text-warning">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </span>
-                <span class="small text-muted ms-1">({{ $product->reviews_count }} avaliações)</span>
-            </div>
-            <div>
-                <span class="badge bg-success">
-                    <i class="fas fa-check-circle me-1"></i> Em estoque
-                </span>
-            </div>
-        </div>
-        @if($product->discount > 0)
-        <div class="mb-2">
-            <span class="text-decoration-line-through text-muted me-2">R$ {{ number_format($product->price, 2, ',', '.') }}</span>
-            <span class="badge bg-danger">-{{ $product->discount }}%</span>
-        </div>
-        @endif
-        <h2 class="text-primary mb-4">R$ {{ number_format($product->discounted_price, 2, ',', '.') }}</h2>
-        <div class="mb-4">
-            <p>{{ $product->short_description }}</p>
-        </div>
-        <div class="mb-4">
-            <div class="d-flex align-items-center mb-2">
-                <strong class="me-2">Marca:</strong>
-                <span>{{ $product->brand->name }}</span>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <strong class="me-2">Categoria:</strong>
-                <a href="{{ route('catalog.category', $product->category->slug) }}" class="text-decoration-none">{{ $product->category->name }}</a>
-            </div>
-        </div>
-        <div class="border-top border-bottom py-3 mb-4">
-            <div class="d-flex align-items-center mb-2">
-                <i class="fas fa-truck text-primary me-2"></i>
-                <span>Frete grátis para todo o país</span>
-            </div>
-            <div class="d-flex align-items-center mb-2">
-                <i class="fas fa-shield-alt text-primary me-2"></i>
-                <span>Garantia de 12 meses</span>
-            </div>
-            <div class="d-flex align-items-center">
-                <i class="fas fa-credit-card text-primary me-2"></i>
-                <span>Parcele em até 12x sem juros</span>
-            </div>
-        </div>
-        <div class="d-flex align-items-center mb-4">
-            <div class="input-group me-3" style="width: 120px;">
-                <button class="btn btn-outline-secondary" type="button" id="decrement">-</button>
-                <input type="text" class="form-control text-center" value="1" id="quantity">
-                <button class="btn btn-outline-secondary" type="button" id="increment">+</button>
-            </div>
-            <button class="btn btn-primary me-2 flex-grow-1">
-                <i class="fas fa-shopping-cart me-2"></i> Adicionar ao Carrinho
-            </button>
-            <button class="btn btn-outline-secondary">
-                <i class="far fa-heart"></i>
-            </button>
-        </div>
-        <div class="alert alert-info">
-            <i class="fas fa-info-circle me-2"></i> Entrega em 3-5 dias úteis para a maioria das regiões.
-        </div>
-    </div>
 </div>
 @endsection
 
-@push('scripts')
+<!-- Scripts JS para galeria e quantidade -->
 <script>
+    // Troca entre imagem principal e vídeo
+    function showMainMedia(type, src = null) {
+        const img = document.getElementById('mainProductImage');
+        const video = document.getElementById('mainProductVideo');
+        if (type === 'img') {
+            img.style.display = '';
+            img.src = src;
+            if (video) video.style.display = 'none';
+        } else if (type === 'video') {
+            if (video) {
+                img.style.display = 'none';
+                video.style.display = '';
+            }
+        }
+    }
+    // Botão de incrementar quantidade
     document.getElementById('increment').addEventListener('click', function() {
         const quantityInput = document.getElementById('quantity');
         quantityInput.value = parseInt(quantityInput.value) + 1;
     });
-
+    // Botão de decrementar quantidade
     document.getElementById('decrement').addEventListener('click', function() {
         const quantityInput = document.getElementById('quantity');
         if (parseInt(quantityInput.value) > 1) {
@@ -123,4 +179,3 @@
         }
     });
 </script>
-@endpush

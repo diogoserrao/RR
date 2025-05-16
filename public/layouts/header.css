@@ -1,0 +1,86 @@
+/* Header principal */
+.electrohome-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1040;
+    background-color: var(--bs-primary);
+    color: white;
+    padding: 24px 0;
+}
+
+/* Container do logo e texto */
+.header-brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-brand-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+
+.header-brand-text h1 {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.header-brand-text p {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+/* Container dos elementos à direita */
+.header-actions-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Barra de pesquisa */
+.header-search {
+    width: 75%;
+    margin-right: 1rem;
+}
+
+.header-search-input {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.header-search-button {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-left: 0;
+}
+
+/* Ícones de ação */
+.header-action-icons {
+    position: relative;
+}
+
+.header-action-icon {
+    color: white;
+    margin: 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+/* Badge do carrinho */
+.cart-badge {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    font-size: 0.6em;
+    padding: 0.35em 0.35em; /* Valores iguais para padding */
+    background-color: var(--bs-danger);
+    border-radius: 50%; /* Usando 50% para garantir um círculo perfeito */
+    min-width: 1.5em; /* Garante tamanho mínimo mesmo com poucos dígitos */
+    min-height: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}

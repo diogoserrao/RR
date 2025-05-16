@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Product;
@@ -12,9 +13,13 @@ class CatalogController extends Controller
     {
         $query = Product::with('brand', 'category');
 
-        if ($request->category) {
-            $query->where('category_id', $request->category);
+       if ($request->has('category')) {
+            $category = Category::where('slug', $request->category)->first();
+            if ($category) {
+                $query->where('category_id', $category->id);
+            }
         }
+        
         if ($request->brands) {
             $query->whereIn('brand_id', $request->brands);
         }
@@ -40,10 +45,16 @@ class CatalogController extends Controller
                 $query->orderBy('id', 'desc');
         }
 
+        
+
         $products = $query->paginate(12);
         $categories = Category::all();
         $brands = Brand::all();
-        return view('catalog.index', compact('products', 'categories', 'brands'));
+        $featuredProducts = Product::with('brand', 'category')->take(3)->get(); // Adiciona esta linha
+        $cart = session('cart', []);
+        $cartCount = array_sum(array_column($cart, 'quantity'));
+
+        return view('catalog.index', compact('products', 'categories', 'brands', 'featuredProducts', 'cartCount'));
     }
 
     public function category($slug)
@@ -52,12 +63,16 @@ class CatalogController extends Controller
         $products = Product::with('brand')->where('category_id', $category->id)->paginate(12);
         $categories = Category::all();
         $brands = Brand::all();
-        return view('catalog.category', compact('category', 'products', 'categories', 'brands'));
+        $cart = session('cart', []);
+        $cartCount = array_sum(array_column($cart, 'quantity'));
+
+        return view('catalog.category', compact('category', 'products', 'categories', 'brands', 'cartCount'));
     }
 
     public function product($category, $id)
     {
         $product = Product::with('brand', 'category')->findOrFail($id);
+
         return view('catalog.product', compact('product'));
     }
 }

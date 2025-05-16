@@ -24,14 +24,14 @@ class SiteSeeder extends Seeder
 
         // Categorias
         $categories = [
-            ['name' => 'Frigoríficos', 'slug' => 'refrigerators'],
-            ['name' => 'Máquinas de Lavar Roupa', 'slug' => 'washing-machines'],
-            ['name' => 'Forno', 'slug' => 'ovens'],
-            ['name' => 'Ar Condicionado', 'slug' => 'air-conditioners'],
-            ['name' => 'Pequenos Eletrodomésticos', 'slug' => 'small-appliances'],
-            ['name' => 'Televisões', 'slug' => 'televisions'],           
-            ['name' => 'Cafeteiras', 'slug' => 'coffee-makers'],             
-            ['name' => 'Aspiradores', 'slug' => 'vacuum-cleaners'],
+            ['name' => 'Frigoríficos', 'slug' => 'refrigerators', 'image_url' => 'https://th.bing.com/th/id/R.bda305e660e8a1714252a017eef94d21?rik=2B4IZnF1aspt4A&pid=ImgRaw&r=0'],
+            ['name' => 'Máquinas de Lavar Roupa', 'slug' => 'washing-machines', 'image_url' => 'https://machinesuae.com/cdn/shop/files/rdpd107407sdgcc-01_1.jpg?v=1686649674&width=1445'],
+            ['name' => 'Forno', 'slug' => 'ovens', 'image_url' => 'https://th.bing.com/th/id/R.91989569cae52d5a8b7cb322cf0c13a4?rik=%2f6flNMrzaRjdTA&riu=http%3a%2f%2f4.bp.blogspot.com%2f-yYNBtlVBNsU%2fVMpxpfaoMJI%2fAAAAAAAAGJE%2fEXUFyfykZl0%2fs1600%2fmelhor-fogao.jpg&ehk=hUaJEBOzBJv2DQag%2fVmAyzubymIYqTuDKcoVQvanWbo%3d&risl=&pid=ImgRaw&r=0'],
+            ['name' => 'Ar Condicionado', 'slug' => 'air-conditioners', 'image_url' => 'https://th.bing.com/th/id/OIP.xViFyRHj9FFE4hkG2iOlPQAAAA?w=450&h=450&rs=1&pid=ImgDetMain'],
+            ['name' => 'Pequenos Eletrodomésticos', 'slug' => 'small-appliances', 'image_url' => 'https://www.worten.pt/i/ad2a3c740d9ce23fae9bf4acf11e7699b326637e'],
+            ['name' => 'Televisões', 'slug' => 'televisions', 'image_url' => 'https://mb.web.sapo.io/735e212980dabcdbf5033ab67680e50541d9d278.jpg'],           
+            ['name' => 'Cafeteiras', 'slug' => 'coffee-makers', 'image_url' => 'https://cdn.sabado.pt/images/2020-10/OriginalSize$2021_10_14_14_37_28_658990.jpg'],             
+            ['name' => 'Aspiradores', 'slug' => 'vacuum-cleaners', 'image_url' => 'https://assets.cdn.jula.com/preset:jpgoptimized/w:828/Dmm3BWSV3/assetstream.aspx?assetId=198306&mediaformatid=50137&destinationid=10016&lastmodified=20231013063352'],
         ];
         DB::table('categories')->insert($categories);
 

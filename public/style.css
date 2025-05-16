@@ -128,7 +128,6 @@ footer a:hover {
 .brand-slider {
     display: flex;
     align-items: center;
-    animation: brand-scroll 30s linear infinite;
 }
 
 .brand-item {
