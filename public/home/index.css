@@ -118,6 +118,13 @@
 }
 
 /* Mais Vendidos */
+
+.col-mais-vendido-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
 .section-mais-vendidos {
     margin-bottom: 3rem;
 }

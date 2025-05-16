@@ -58,7 +58,7 @@
                                         @else
                                         <i class="far fa-star"></i>
                                         @endif
-                                    @endfor
+                                        @endfor
                                 </div>
                             </td>
                             <td>
@@ -82,7 +82,7 @@
                                 <form action="{{ route('cart.remove') }}" method="POST" style="display:inline;">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{ $item['id'] }}">
-                                    <button class="cart-remove-btn" type="submit">
+                                    <button class="cart-remove-btn cart-btn cart-btn-small" type="submit" style=" border: 1px solid #dc3545;">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
@@ -92,15 +92,15 @@
                     </tbody>
                 </table>
             </div>
-            <div class="cart-card-footer">
+            <div class="cart-card-footer" style="padding-bottom:0;">
                 <!-- Botão para continuar comprando -->
-                <a href="{{ route('catalog.index') }}" class="cart-btn cart-btn-outline">
+                <a href="{{ route('catalog.index') }}" class="cart-btn cart-btn-primary cart-btn-small" style="margin-bottom:16px;">
                     <i class="fas fa-arrow-left"></i> Continuar Comprando
                 </a>
                 <!-- Botão para limpar todo o carrinho -->
                 <form action="{{ route('cart.clear') }}" method="POST" style="display:inline;">
                     @csrf
-                    <button class="cart-btn cart-btn-danger" type="submit">
+                    <button class="cart-btn cart-btn-danger cart-btn-small" type="submit">
                         <i class="fas fa-trash-alt"></i> Limpar Carrinho
                     </button>
                 </form>
@@ -108,18 +108,7 @@
         </div>
 
         <!-- ====== CUPOM DE DESCONTO ====== -->
-        <div class="cart-card mt-4">
-            <div class="cart-card-header">
-                <h5>Cupom de Desconto</h5>
-            </div>
-            <div class="cart-card-body">
-                <div class="cart-coupon-group">
-                    <input type="text" class="cart-coupon-input" placeholder="Digite seu cupom" id="couponCode">
-                    <button class="cart-btn cart-btn-primary" type="button" id="applyCoupon">Aplicar</button>
-                </div>
-                <div id="couponMessage" class="cart-coupon-message"></div>
-            </div>
-        </div>
+
         <!-- ====== /CUPOM DE DESCONTO ====== -->
     </div>
 
@@ -251,7 +240,11 @@
     document.getElementById('applyCoupon').addEventListener('click', function() {
         const couponCode = document.getElementById('couponCode').value;
         const couponMessage = document.getElementById('couponMessage');
-        const subtotal = {{ json_encode($subtotal) }};
+        const subtotal = {
+            {
+                json_encode($subtotal)
+            }
+        };
         if (!couponCode) {
             couponMessage.innerHTML = '<span class="cart-msg-error">Por favor, insira um código de cupom</span>';
             return;
@@ -287,7 +280,11 @@
         const discount = discountText.includes('€') ?
             parseFloat(discountText.replace('€ ', '').replace(',', '.')) :
             0;
-        const subtotal = {{ json_encode($subtotal) }};
+        const subtotal = {
+            {
+                json_encode($subtotal)
+            }
+        };
         const total = subtotal - discount + shippingCost;
         document.getElementById('totalValue').textContent = ` ${total.toFixed(2).replace('.', ',')} € `;
     }

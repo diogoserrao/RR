@@ -74,25 +74,27 @@
     <div class="row-mais-vendidos">
         @foreach($topProducts as $product)
         <div class="col-mais-vendido">
-            <div class="card-mais-vendido">
-                <div class="badge-mais-vendido">Mais Vendido</div>
-                <div class="mais-vendido-img-wrapper">
-                    <img src="{{ $product->image_url }}" class="mais-vendido-img" alt="{{ $product->name }}">
-                </div>
-                <div class="card-body-mais-vendido">
-                    <h5 class="card-title-mais-vendido">{{ $product->name }}</h5>
-                    <p class="card-text-mais-vendido">{{ $product->short_description }}</p>
-                    <div class="card-footer-mais-vendido">
-                        <div>
-                            <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
-                            <span class="preco-novo preco-novo-vendido"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
+            <a href="{{ route('catalog.product', ['category' => $product->category->slug, 'id' => $product->id]) }}" class="col-mais-vendido-link">
+                <div class="card-mais-vendido">
+                    <div class="badge-mais-vendido">Mais Vendido</div>
+                    <div class="mais-vendido-img-wrapper">
+                        <img src="{{ $product->image_url }}" class="mais-vendido-img" alt="{{ $product->name }}">
+                    </div>
+                    <div class="card-body-mais-vendido">
+                        <h5 class="card-title-mais-vendido">{{ $product->name }}</h5>
+                        <p class="card-text-mais-vendido">{{ $product->short_description }}</p>
+                        <div class="card-footer-mais-vendido">
+                            <div>
+                                <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
+                                <span class="preco-novo preco-novo-vendido"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
+                            </div>
+                            <button class="btn-carrinho" type="button">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
                         </div>
-                        <button class="btn-carrinho">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         @endforeach
     </div>
@@ -149,23 +151,23 @@
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const slider = document.getElementById('brandSlider');
-    // Duplicar o conteúdo para efeito infinito
-    slider.innerHTML += slider.innerHTML;
-    let scrollAmount = 0;
-    const speed = 0.5; // pixels por frame
+    document.addEventListener('DOMContentLoaded', function() {
+        const slider = document.getElementById('brandSlider');
+        // Duplicar o conteúdo para efeito infinito
+        slider.innerHTML += slider.innerHTML;
+        let scrollAmount = 0;
+        const speed = 0.5; // pixels por frame
 
-    function animate() {
-        scrollAmount += speed;
-        if (scrollAmount >= slider.scrollWidth / 2) {
-            scrollAmount = 0;
+        function animate() {
+            scrollAmount += speed;
+            if (scrollAmount >= slider.scrollWidth / 2) {
+                scrollAmount = 0;
+            }
+            slider.style.transform = `translateX(-${scrollAmount}px)`;
+            requestAnimationFrame(animate);
         }
-        slider.style.transform = `translateX(-${scrollAmount}px)`;
-        requestAnimationFrame(animate);
-    }
-    animate();
-});
+        animate();
+    });
 </script>
 
 @endsection

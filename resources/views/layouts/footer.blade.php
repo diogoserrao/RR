@@ -33,9 +33,9 @@
             <div class="footer-col">
                 <h5 class="footer-title">Categorias</h5>
                 <ul class="footer-list">
-                    <li><a href="{{ route('catalog.index') }}">Geladeiras</a></li>
+                    <li><a href="{{ route('catalog.index') }}">Frigorificos</a></li>
                     <li><a href="{{ route('catalog.index') }}">Fogões</a></li>
-                    <li><a href="{{ route('catalog.index') }}">Lavadoras</a></li>
+                    <li><a href="{{ route('catalog.index') }}">Maquinas de lavar</a></li>
                     <li><a href="{{ route('catalog.index') }}">Microondas</a></li>
                     <li><a href="{{ route('catalog.index') }}">Ar Condicionado</a></li>
                 </ul>

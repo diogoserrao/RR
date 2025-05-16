@@ -126,57 +126,56 @@
         <div class="catalog-products-row">
             @foreach($products as $product)
             <div class="catalog-product-col">
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="{{ $product->image_url }}" class="product-img" alt="{{ $product->name }}">
-                        <div class="product-actions">
-                            <button class="product-action-btn">
-                                <i class="fas fa-heart"></i>
-                            </button>
-                            <button class="product-action-btn">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                        @if($product->discount > 0)
-                        <div class="product-badge">
-                            -{{ $product->discount }}%
-                        </div>
-                        @endif
-                    </div>
-                    <div class="product-card-body">
-                        <span class="product-brand-badge">{{ $product->brand->name }}</span>
-                        <h5 class="product-title">
-                            <a href="{{ route('catalog.product', ['category' => $product->category->slug, 'id' => $product->id]) }}">{{ $product->name }}</a>
-                        </h5>
-                        <div class="product-rating-row">
-                            <div class="product-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="product-reviews">({{ $product->reviews_count }} avaliações)</span>
-                        </div>
-                        <div class="product-bottom-row">
-                            <div>
-                                @if($product->discount > 0)
-                                <span class="product-old-price">{{ number_format($product->price, 2, ',', '.') }} €</span>
-                                @endif
-                                <div class="product-price"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</div>
-                            </div>
-
-                            <form action="{{ route('cart.add') }}" method="POST" style="display:inline;">
-                                @csrf
-                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <input type="hidden" name="quantity" value="1">
-                                <button type="submit" class="product-cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
+                <a href="{{ route('catalog.product', ['category' => $product->category->slug, 'id' => $product->id]) }}" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="{{ $product->image_url }}" class="product-img" alt="{{ $product->name }}">
+                            <div class="product-actions">
+                                <button class="product-action-btn" type="button">
+                                    <i class="fas fa-heart"></i>
                                 </button>
-                            </form>
+                                <button class="product-action-btn" type="button">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            @if($product->discount > 0)
+                            <div class="product-badge">
+                                -{{ $product->discount }}%
+                            </div>
+                            @endif
+                        </div>
+                        <div class="product-card-body">
+                            <span class="product-brand-badge">{{ $product->brand->name }}</span>
+                            <h5 class="product-title">{{ $product->name }}</h5>
+                            <div class="product-rating-row">
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="product-reviews">({{ $product->reviews_count }} avaliações)</span>
+                            </div>
+                            <div class="product-bottom-row">
+                                <div>
+                                    @if($product->discount > 0)
+                                    <span class="product-old-price">{{ number_format($product->price, 2, ',', '.') }} €</span>
+                                    @endif
+                                    <div class="product-price"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</div>
+                                </div>
+                                <form action="{{ route('cart.add') }}" method="POST" style="display:inline;" onclick="event.stopPropagation();">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit" class="product-cart-btn">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             @endforeach
         </div>

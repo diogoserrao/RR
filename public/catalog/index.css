@@ -201,6 +201,12 @@
 }
 
 /* Cards de Produto */
+.product-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    
+}
 .product-card {
     border-radius: 0.5rem;
     border: 1px solid #eee;
@@ -256,9 +262,7 @@
     transition: opacity 0.3s;
     cursor: pointer;
 }
-.product-card:hover .product-action-btn {
-    opacity: 1;
-}
+
 .product-badge {
     top: 0.5rem;
     left: 0.5rem;
@@ -297,14 +301,18 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
+
 .product-title a {
     color: #222;
     text-decoration: none;
     transition: color 0.2s;
 }
-.product-title a:hover {
+
+.product-card-link:hover .product-title,
+.product-card-link:focus .product-title {
     color: #0d6efd;
 }
+
 .product-rating-row {
     display: flex;
     align-items: center;
