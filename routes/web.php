@@ -17,6 +17,8 @@ Route::prefix('catalogo')->group(function () {
     Route::get('/{category}/{id}', [CatalogController::class, 'product'])->name('catalog.product');
 });
 
+Route::get('/promocoes', [CatalogController::class, 'promotions'])->name('catalog.promotions');
+
 // Carrinho
 Route::get('/carrinho', [CartController::class, 'index'])->name('cart');
 Route::post('/carrinho/adicionar', [CartController::class, 'add'])->name('cart.add');

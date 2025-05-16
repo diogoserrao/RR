@@ -13,22 +13,38 @@ class CatalogController extends Controller
     {
         $query = Product::with('brand', 'category');
 
-       if ($request->has('category')) {
+        if ($request->has('category')) {
             $category = Category::where('slug', $request->category)->first();
             if ($category) {
                 $query->where('category_id', $category->id);
             }
         }
+
+        if ($request->has('no_promotions') && $request->no_promotions == 1) {
+            $query->where(function ($q) {
+                $q->where('discount', 0)->orWhere('discounted_price', 0);
+            });
+        }
         
+        // Filtro de pesquisa
         if ($request->brands) {
             $query->whereIn('brand_id', $request->brands);
         }
+        // Filtro de pesquisa
         if ($request->price_min !== null && $request->price_min !== '') {
             $query->where('discounted_price', '>=', floatval($request->price_min));
         }
+        // Filtro de preço máximo
         if ($request->price_max !== null && $request->price_max !== '') {
             $query->where('discounted_price', '<=', floatval($request->price_max));
         }
+
+        // Filtro de promoções
+        if ($request->has('promotions') && $request->promotions == 1) {
+            $query->where('discount', '>', 0)->where('discounted_price', '>', 0);
+        }
+
+        
 
         switch ($request->sort) {
             case 'price_asc':
@@ -45,7 +61,7 @@ class CatalogController extends Controller
                 $query->orderBy('id', 'desc');
         }
 
-        
+
 
         $products = $query->paginate(12);
         $categories = Category::all();
@@ -74,5 +90,13 @@ class CatalogController extends Controller
         $product = Product::with('brand', 'category')->findOrFail($id);
 
         return view('catalog.product', compact('product'));
+    }
+
+    public function promotions()
+    {
+        $products = Product::where('discount', '>', 0)->paginate(12);
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view('catalog.promotions', compact('products', 'categories', 'brands'));
     }
 }

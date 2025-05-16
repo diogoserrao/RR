@@ -64,7 +64,7 @@
         @endforeach
     </div>
     <div class="text-center mt-3">
-        <a href="{{ route('catalog.index') }}" class="btn-ver-todos">Ver Todos os Produtos</a>
+        <a href="{{ route('catalog.index', ['promotions' => 1]) }}">Promoções</a>
     </div>
 </section>
 

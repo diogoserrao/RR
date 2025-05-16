@@ -135,6 +135,33 @@
     color: #fff;
 }
 
+/* Promoções */
+.filter-btn-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: #0d6efd;
+    border: 1.5px solid #0d6efd;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    padding: 0.45rem 1.2rem;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    box-shadow: 0 1px 4px rgba(13,110,253,0.04);
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+}
+.filter-btn-toggle:hover,
+.filter-btn-toggle.active {
+    background: #0d6efd;
+    color: #fff;
+    border-color: #0d6efd;
+    text-decoration: none;
+}
+
+
+
 /* Produtos em Destaque (Sidebar) */
 .featured-products-card {
     border-radius: 0.5rem;

@@ -38,6 +38,16 @@
                         @endforeach
                     </ul>
 
+                    <!-- Filtro por Promoções -->
+                    <h6 class="filter-title">Promoções</h6>
+                    <ul class="filter-list">
+                        <li>
+                            <input type="checkbox" name="no_promotions" value="1" id="promo_toggle"
+                                onchange="this.form.submit()" {{ request('no_promotions') == 1 ? 'checked' : '' }}>
+                            <label for="promo_toggle">Promoções</label>
+                        </li>
+                    </ul>
+
                     <!-- Filtro por Marcas -->
                     <h6 class="filter-title">Marcas</h6>
                     @foreach($brands as $brand)
