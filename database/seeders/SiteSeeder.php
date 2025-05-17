@@ -9,16 +9,60 @@ class SiteSeeder extends Seeder
 {
     public function run()
     {
-        // Marcas
+        // Marcas **********************************************MUDAR LOGO TIPOS ****************************************************
         $brands = [
             ['name' => 'LG', 'logo_url' => 'https://th.bing.com/th/id/R.c670a6788b9b3a6982c7d8f98dc01de1?rik=s4rE0%2bwrjIXADw&pid=ImgRaw&r=0'],
             ['name' => 'Samsung', 'logo_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/320px-Samsung_Logo.svg.png'],
             ['name' => 'Whirlpool', 'logo_url' => 'https://th.bing.com/th/id/R.0fbbdf9e69f6c06cdecd0963a01ec4ca?rik=wDATNAf8y1Xglw&pid=ImgRaw&r=0'],
             ['name' => 'Bosch', 'logo_url' => 'https://logohistory.net/wp-content/uploads/2022/09/Bosch-Logo-2002-2048x1152.png'],
+            // Focar mais na Bosh //
             ['name' => 'Electrolux', 'logo_url' => 'https://logos-world.net/wp-content/uploads/2020/12/Electrolux-Logo-1990-2015.png'],
-            ['name' => 'Consul', 'logo_url' => 'https://vectorseek.com/wp-content/uploads/2023/11/Consul-2007-Logo-Vector.svg-.png'],
-            ['name' => 'Philips', 'logo_url' => 'https://logos-world.net/wp-content/uploads/2020/09/Philips-Emblem.png'],
-            ['name' => 'Britânia', 'logo_url' => 'https://freepngdesign.com/content/uploads/images/p-2825-2-britania-logo-png-transparent-logo-162413533999.png'],
+            ['name' => 'Siemens', 'logo_url' => ''],
+            ['name' => 'Balay', 'logo_url' => ''],
+            ['name' => 'Teka', 'logo_url' => ''],
+
+            ['name' => 'Hisense', 'logo_url' => ''],
+            ['name' => 'Smeg', 'logo_url' => ''],
+            ['name' => 'Indesit', 'logo_url' => ''],
+            ['name' => 'Hotpoint', 'logo_url' => ''],
+            ['name' => 'Haier', 'logo_url' => ''],
+            ['name' => 'Tefal', 'logo_url' => ''],
+            ['name' => 'Candy', 'logo_url' => ''],
+            ['name' => 'Starlux', 'logo_url' => ''],
+            ['name' => 'Haeger', 'logo_url' => ''],
+            ['name' => 'Flama', 'logo_url' => ''],
+            ['name' => 'Taurus', 'logo_url' => ''],
+            ['name' => 'Orbegozo', 'logo_url' => ''],
+            ['name' => 'Philips', 'logo_url' => ''],
+            ['name' => 'Ariston', 'logo_url' => ''],
+            ['name' => 'Ufesa', 'logo_url' => ''],
+            ['name' => 'Meireles', 'logo_url' => ''],
+            ['name' => 'Rowenta', 'logo_url' => ''],
+            ['name' => 'AEG', 'logo_url' => ''],
+
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+
+            // Marcas para Carpintaria
+            ['name' => 'Miele', 'logo_url' => ''],
+            ['name' => 'Bora', 'logo_url' => ''],
+            ['name' => 'Quooker', 'logo_url' => ''],
+            ['name' => 'Siemens StudioLine', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+            ['name' => '', 'logo_url' => ''],
+
+
         ];
         DB::table('brands')->insert($brands);
 
@@ -29,9 +73,18 @@ class SiteSeeder extends Seeder
             ['name' => 'Forno', 'slug' => 'ovens', 'image_url' => 'https://th.bing.com/th/id/R.91989569cae52d5a8b7cb322cf0c13a4?rik=%2f6flNMrzaRjdTA&riu=http%3a%2f%2f4.bp.blogspot.com%2f-yYNBtlVBNsU%2fVMpxpfaoMJI%2fAAAAAAAAGJE%2fEXUFyfykZl0%2fs1600%2fmelhor-fogao.jpg&ehk=hUaJEBOzBJv2DQag%2fVmAyzubymIYqTuDKcoVQvanWbo%3d&risl=&pid=ImgRaw&r=0'],
             ['name' => 'Ar Condicionado', 'slug' => 'air-conditioners', 'image_url' => 'https://th.bing.com/th/id/OIP.xViFyRHj9FFE4hkG2iOlPQAAAA?w=450&h=450&rs=1&pid=ImgDetMain'],
             ['name' => 'Pequenos Eletrodomésticos', 'slug' => 'small-appliances', 'image_url' => 'https://www.worten.pt/i/ad2a3c740d9ce23fae9bf4acf11e7699b326637e'],
-            ['name' => 'Televisões', 'slug' => 'televisions', 'image_url' => 'https://mb.web.sapo.io/735e212980dabcdbf5033ab67680e50541d9d278.jpg'],           
-            ['name' => 'Cafeteiras', 'slug' => 'coffee-makers', 'image_url' => 'https://cdn.sabado.pt/images/2020-10/OriginalSize$2021_10_14_14_37_28_658990.jpg'],             
+            ['name' => 'Televisões', 'slug' => 'televisions', 'image_url' => 'https://mb.web.sapo.io/735e212980dabcdbf5033ab67680e50541d9d278.jpg'],
+            ['name' => 'Cafeteiras', 'slug' => 'coffee-makers', 'image_url' => 'https://cdn.sabado.pt/images/2020-10/OriginalSize$2021_10_14_14_37_28_658990.jpg'],
             ['name' => 'Aspiradores', 'slug' => 'vacuum-cleaners', 'image_url' => 'https://assets.cdn.jula.com/preset:jpgoptimized/w:828/Dmm3BWSV3/assetstream.aspx?assetId=198306&mediaformatid=50137&destinationid=10016&lastmodified=20231013063352'],
+            //microondas
+            //placas
+            //exaustores
+            //fogoes
+            //maquinas de lavar loiça
+            //maquinas de roupa, subcategoria: lavar e secar, lavar so e so secar
+            //lava louças
+            //misturadoras
+            //chaleiras, tostadeiras, torradeiras, fritadeiras com e sem oleo , varinha mágica, liquidificadores, picadoras, espremedores,centrifugadors, batedeiras, grelhadores,
         ];
         DB::table('categories')->insert($categories);
 
