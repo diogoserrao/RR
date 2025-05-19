@@ -19,6 +19,9 @@ return new class extends Migration {
             $table->string('name');
             $table->string('slug')->unique();
             $table->text('image_url')->nullable();
+
+            $table->unsignedBigInteger('parent_id')->nullable();
+            
             $table->timestamps();
         });
 
@@ -41,29 +44,13 @@ return new class extends Migration {
             $table->foreign('category_id')->references('id')->on('categories');
         });
 
-        Schema::create('team_members', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('role');
-            $table->string('photo_url');
-            $table->timestamps();
-        });
-
-        Schema::create('testimonials', function (Blueprint $table) {
-            $table->id();
-            $table->string('client_name');
-            $table->string('city');
-            $table->string('photo_url');
-            $table->text('text');
-            $table->integer('rating');
-            $table->timestamps();
-        });
+       
+        
     }
 
     public function down()
     {
-        Schema::dropIfExists('testimonials');
-        Schema::dropIfExists('team_members');
+       
         Schema::dropIfExists('products');
         Schema::dropIfExists('categories');
         Schema::dropIfExists('brands');

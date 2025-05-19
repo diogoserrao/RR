@@ -13,6 +13,28 @@ class CatalogController extends Controller
     {
         $query = Product::with('brand', 'category');
 
+
+        $selectedCategory = null;
+        $subcategories = collect();
+
+        // Filtro de categorias
+        if ($request->has('category')) {
+            $selectedCategory = Category::where('slug', $request->category)->first();
+            if ($selectedCategory) {
+                $query->where('category_id', $selectedCategory->id);
+                // Buscar subcategorias da categoria selecionada
+                $subcategories = Category::where('parent_id', $selectedCategory->id)->get();
+            }
+        }
+
+        // Filtro de subcategorias
+        if ($request->has('subcategory')) {
+            $subcat = Category::where('slug', $request->subcategory)->first();
+            if ($subcat) {
+                $query->where('category_id', $subcat->id);
+            }
+        }
+
         if ($request->has('category')) {
             $category = Category::where('slug', $request->category)->first();
             if ($category) {
@@ -73,7 +95,7 @@ class CatalogController extends Controller
         $cart = session('cart', []);
         $cartCount = array_sum(array_column($cart, 'quantity'));
 
-        return view('catalog.index', compact('products', 'categories', 'brands', 'featuredProducts', 'cartCount'));
+        return view('catalog.index', compact('products', 'categories', 'brands', 'featuredProducts', 'cartCount', 'selectedCategory', 'subcategories'));
     }
 
     public function category($slug)
