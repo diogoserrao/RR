@@ -12,8 +12,8 @@ class HomeController extends Controller
     {
         $featuredProducts = Product::with('brand', 'category')->take(4)->get();
         $brands = Brand::all();
-        $categories = Category::all();
-        //$categories = Category::whereNull('parent_id')->get();
+       
+        $categories = Category::whereNull('parent_id')->get();
         $topProducts = Product::where('is_best_seller', true)->take(8)->get(); // Só 3 produtos
         $cart = session('cart', []);
         $cartCount = array_sum(array_column($cart, 'quantity'));

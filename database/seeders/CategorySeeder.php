@@ -61,19 +61,19 @@ class CategorySeeder extends Seeder
                 'name' => 'Placas a Gás',
                 'slug' => 'gas-plates',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/MCSA01672687_PCR9A5B90_def.webp',
-                'parent_id' => 3
+                'parent_id' => 6
             ],
             [
                 'name' => 'Placas de Indução',
                 'slug' => 'induction-plates',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/22213724_PVS611B16E_STP_def.webp',
-                'parent_id' => 3
+                'parent_id' => 6
             ],
             [
                 'name' => 'Placas Elétricas',
                 'slug' => 'electrical-plates',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/MCSA01030233_652027_PKM875DP1D_def.webp',
-                'parent_id' => 3
+                'parent_id' => 6
             ],
 
             //Maquinas de lavar loiça
@@ -88,19 +88,19 @@ class CategorySeeder extends Seeder
                 'name' => 'Maquina de Lavar Loiça Integrada',
                 'slug' => 'dishwashers-integrated',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/25112072_SMT6ECX12E_STP_def.webp',
-                'parent_id' => 4
+                'parent_id' => 10
             ],
             [
-                'name' => 'Maquian de Lavar Loiça Independente',
+                'name' => 'Maquima de Lavar Loiça Independente',
                 'slug' => 'dishwashers-independent',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/22519889_SMS4EMC06E_STP_def.webp',
-                'parent_id' => 4
+                'parent_id' => 10
             ],
             [
                 'name' => 'Maquina de Lavar Loiça Compacta',
                 'slug' => 'dishwashers-compact',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/25074143_SKS6ITB00E_STP_def.webp',
-                'parent_id' => 4
+                'parent_id' => 10
             ],
 
             // Exaustores
@@ -130,37 +130,37 @@ class CategorySeeder extends Seeder
                 'name' => 'Cafeteiras',
                 'slug' => 'coffee-makers',
                 'image_url' => 'https://www.feijoo.es/wp-content/uploads/CAFETERA-BOSCH-TAS1002V-PACK.jpg',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Torradeiras',
                 'slug' => 'toasters',
                 'image_url' => '',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Chaleiras Elétricas',
                 'slug' => 'electric-kettles',
                 'image_url' => '',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Fritadeiras',
                 'slug' => 'deep-fryers',
                 'image_url' => '',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Batedeiras',
                 'slug' => 'mixers',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/17572582_MFQ49300_STP_def.webp',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Liquidificadores',
                 'slug' => 'blenders',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/22487470_MMB6762M_STP_def.webp',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Varinhas Mágicas',
@@ -172,25 +172,25 @@ class CategorySeeder extends Seeder
                 'name' => 'Espremedores de Citrinos',
                 'slug' => 'juicers',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/MCSA01872531_G9365_MCP72GPB_1292462_def.webp',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Centrífugas',
                 'slug' => 'centrifuges',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/MCSA00763480_E6380_MES25A0_408151_def.webp',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Picadoras',
                 'slug' => 'choppers',
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/MCSA00496021_D5075_MMR08A1_106840_def.webp',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
             [
                 'name' => 'Grelhadores Elétricos',
                 'slug' => 'grills',
                 'image_url' => '',
-                'parent_id' => 8
+                'parent_id' => 16
             ],
 
             // Outros

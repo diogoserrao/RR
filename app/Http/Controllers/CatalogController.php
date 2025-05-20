@@ -21,9 +21,13 @@ class CatalogController extends Controller
         if ($request->has('category')) {
             $selectedCategory = Category::where('slug', $request->category)->first();
             if ($selectedCategory) {
-                $query->where('category_id', $selectedCategory->id);
                 // Buscar subcategorias da categoria selecionada
                 $subcategories = Category::where('parent_id', $selectedCategory->id)->get();
+                $subcategoryIds = $subcategories->pluck('id')->toArray();
+                // Incluir a própria categoria (caso haja produtos nela)
+                $categoryIds = array_merge([$selectedCategory->id], $subcategoryIds);
+                // Buscar produtos de todas as subcategorias e da categoria principal
+                $query->whereIn('category_id', $categoryIds);
             }
         }
 
@@ -35,12 +39,7 @@ class CatalogController extends Controller
             }
         }
 
-        if ($request->has('category')) {
-            $category = Category::where('slug', $request->category)->first();
-            if ($category) {
-                $query->where('category_id', $category->id);
-            }
-        }
+      
 
         // Filtro de promoções
         if ($request->has('promotions') && $request->promotions == 1) {
@@ -73,10 +72,10 @@ class CatalogController extends Controller
 
         switch ($request->sort) {
             case 'price_asc':
-                $query->orderBy('discounted_price', 'asc');
+                $query->orderByRaw('IF(discounted_price > 0, discounted_price, price) ASC');
                 break;
             case 'price_desc':
-                $query->orderBy('discounted_price', 'desc');
+                $query->orderByRaw('IF(discounted_price > 0, discounted_price, price) DESC');
                 break;
             case 'best_sellers':
             case 'top_rated':
@@ -88,8 +87,8 @@ class CatalogController extends Controller
 
 
 
-        $products = $query->paginate(12);
-        $categories = Category::all();
+        $products = $query->paginate(20);
+        $categories = Category::whereNull('parent_id')->get();
         $brands = Brand::all();
         $featuredProducts = Product::with('brand', 'category')->take(3)->get(); // Adiciona esta linha
         $cart = session('cart', []);
@@ -102,7 +101,7 @@ class CatalogController extends Controller
     {
         $category = Category::where('slug', $slug)->firstOrFail();
         $products = Product::with('brand')->where('category_id', $category->id)->paginate(12);
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')->get();
         $brands = Brand::all();
         $cart = session('cart', []);
         $cartCount = array_sum(array_column($cart, 'quantity'));
@@ -120,7 +119,7 @@ class CatalogController extends Controller
     public function promotions()
     {
         $products = Product::where('discount', '>', 0)->paginate(12);
-        $categories = Category::all();
+        $categories = Category::whereNull('parent_id')->get();
         $brands = Brand::all();
         return view('catalog.promotions', compact('products', 'categories', 'brands'));
     }

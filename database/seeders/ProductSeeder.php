@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Máquina de Lavar Roupa Bosch',
                 'brand_id' => 4,
-                'category_id' => 2,
+                'category_id' => 3,
                 'short_description' => 'Alta performance e eficiência energética.',
                 'description' => 'Máquina de Lavar Roupa 9kg Bosch com motor EcoSilence Drive e programas inteligentes.',
                 'price' => 599.99,
@@ -44,7 +44,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Máquina de Secar Roupa Bosch 8kg',
                 'brand_id' => 4,
-                'category_id' => 2,
+                'category_id' => 4,
                 'short_description' => 'Secagem eficiente com sensor de humidade.',
                 'description' => 'Secadora com bomba de calor, 8kg de capacidade, classe energética A++.',
                 'price' => 520.00,
@@ -59,7 +59,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Máquina de Lavar e Secar Bosch',
                 'brand_id' => 4,
-                'category_id' => 2,
+                'category_id' => 5,
                 'short_description' => '2 em 1: Lava e seca com máxima eficiência.',
                 'description' => 'Capacidade de 10kg para lavagem e 6kg para secagem. Tecnologia AutoDry.',
                 'price' => 720.00,
@@ -74,7 +74,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Placa de Indução Bosch Série 4',
                 'brand_id' => 4,
-                'category_id' => 3,
+                'category_id' => 8,
                 'short_description' => 'Cozinhe com rapidez e precisão.',
                 'description' => 'Placa de Indução com 4 zonas, função PowerBoost, touch control.',
                 'price' => 370.00,
@@ -89,7 +89,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Máquina de Lavar Loiça Bosch Independente',
                 'brand_id' => 4,
-                'category_id' => 4,
+                'category_id' => 12,
                 'short_description' => 'Grande capacidade e silêncio absoluto.',
                 'description' => 'Máquina de lavar loiça com 14 talheres, motor EcoSilence, programas automáticos.',
                 'price' => 480.00,
@@ -104,7 +104,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Exaustor Telescópico Bosch',
                 'brand_id' => 4,
-                'category_id' => 5,
+                'category_id' => 14,
                 'short_description' => 'Design moderno e potente.',
                 'description' => 'Exaustor com 3 níveis de potência, LED, motor de alta eficiência.',
                 'price' => 199.90,
@@ -119,7 +119,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Forno Elétrico Bosch Multifuncional',
                 'brand_id' => 4,
-                'category_id' => 6,
+                'category_id' => 15,
                 'short_description' => 'Forno com múltiplas funções de cozedura.',
                 'description' => 'Forno elétrico embutido com função grill, convecção e display digital.',
                 'price' => 449.90,
@@ -134,7 +134,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Cafeteira Bosch Tassimo',
                 'brand_id' => 4,
-                'category_id' => 8,
+                'category_id' => 17,
                 'short_description' => 'Café com um toque!',
                 'description' => 'Máquina de café Tassimo TAS1002V com sistema de cápsulas e design compacto.',
                 'price' => 59.99,
@@ -149,7 +149,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Televisão LED Samsung 50"',
                 'brand_id' => 2,
-                'category_id' => 9,
+                'category_id' => 28,
                 'short_description' => 'Imagem Ultra HD com HDR.',
                 'description' => 'TV 4K Smart LED 50", conectividade Wi-Fi, apps integradas, som Dolby Digital.',
                 'price' => 549.00,
@@ -164,7 +164,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Microondas Bosch Inox 25L',
                 'brand_id' => 4,
-                'category_id' => 10,
+                'category_id' => 29,
                 'short_description' => 'Aquecimento rápido e eficiente.',
                 'description' => 'Microondas 25L com grill, painel digital e design em inox escovado.',
                 'price' => 169.00,
@@ -178,7 +178,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Varinha Mágica Bosch',
                 'brand_id' => 4,
-                'category_id' => 11,
+                'category_id' => 23,
                 'short_description' => 'Mistura e tritura com facilidade.',
                 'description' => 'Varinha mágica com potência de 600W, lâmina de aço inox, fácil de limpar.',
                 'price' => 39.99,
@@ -208,7 +208,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Máquina de Lavar Roupa Samsung 12kg',
                 'brand_id' => 2,
-                'category_id' => 2,
+                'category_id' => 3,
                 'short_description' => 'Máquina eficiente e silenciosa.',
                 'description' => 'Máquina de Lavar Roupa Samsung 12kg, EcoBubble, 15 programas, branca, classe A+++',
                 'price' => 2200.00,
@@ -222,7 +222,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Forno Elétrico Consul',
                 'brand_id' => 6,
-                'category_id' => 3,
+                'category_id' => 15,
                 'short_description' => 'Forno elétrico prático.',
                 'description' => 'Forno Consul 56L, grill, temporizador, luz interior, tabuleiro antiaderente',
                 'price' => 900.00,
@@ -250,7 +250,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Liquidificador Philips',
                 'brand_id' => 7,
-                'category_id' => 5,
+                'category_id' => 22,
                 'short_description' => 'Liquidificador potente.',
                 'description' => 'Liquidificador Philips 700W, jarro de vidro 1.5L, 5 velocidades, preto',
                 'price' => 250.00,
@@ -264,7 +264,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'TV Samsung 55" QLED 4K',
                 'brand_id' => 2,
-                'category_id' => 6,
+                'category_id' => 28,
                 'short_description' => 'TV inteligente com cores vibrantes.',
                 'description' => 'TV Samsung 55" QLED 4K UHD, Smart TV, 3 HDMI, 2 USB, HDR, Alexa integrada',
                 'price' => 4200.00,
@@ -278,7 +278,7 @@ class ProductSeeder extends Seeder
             [
                 'name' => 'Cafeteira Philips Walita',
                 'brand_id' => 7,
-                'category_id' => 7,
+                'category_id' => 17,
                 'short_description' => 'Cafeteira prática e eficiente.',
                 'description' => 'Cafeteira Philips Walita 110V, sistema de filtro permanente, jarra térmica',
                 'price' => 180.00,
