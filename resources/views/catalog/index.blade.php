@@ -72,13 +72,17 @@
                         <!-- Promotions Filter -->
                         <div class="filter-group">
                             <label class="filter-label">Promoções</label>
-                            <div class="select-wrapper">
-                                <select name="promotions" class="filter-select">
-                                    <option value="" {{ request('promotions') ? '' : 'selected' }}>Todos Produtos</option>
-                                    <option value="1" {{ request('promotions') == 1 ? 'selected' : '' }}>Apenas Promoções</option>
-                                </select>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
+                            <label class="promo-checkbox-container">
+                                <input
+                                    type="checkbox"
+                                    name="promotions"
+                                    value="1"
+                                    class="promo-checkbox"
+                                    {{ request('promotions') == 1 ? 'checked' : '' }}
+                                    onchange="document.getElementById('catalog-filters-form').submit();">
+                                <span class="promo-checkmark"></span>
+                                Apenas Promoções
+                            </label>
                         </div>
 
                         <!-- Brands Filter -->

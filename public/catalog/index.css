@@ -93,6 +93,57 @@
 }
 
 /* Filter Card */
+
+.promo-checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 500;
+    gap: 10px;
+}
+
+.promo-checkbox {
+    display: none;
+}
+
+.promo-checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2px solid rgb(48, 104, 145);
+    border-radius: 4px;
+    background: #fff;
+    position: relative;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.promo-checkbox:checked + .promo-checkmark {
+    background: rgb(48, 104, 145);
+    border-color: rgb(48, 104, 145);
+}
+
+.promo-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.promo-checkbox:checked + .promo-checkmark:after {
+    display: block;
+}
+
+.promo-checkbox + .promo-checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    content: "";
+    position: absolute;
+}
+
 .sidebar-header h5,
 .filter-card > h5 {
     font-size: 1.2rem;
