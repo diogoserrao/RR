@@ -17,6 +17,37 @@ class CatalogController extends Controller
         $selectedCategory = null;
         $subcategories = collect();
 
+        // Filtro de pesquisa no header
+        if ($request->filled('q')) {
+            $search = $request->q;
+            $words = preg_split('/\s+/', trim($search));
+
+            $query->where(function ($q) use ($words) {
+                foreach ($words as $word) {
+                    // Tenta singular e plural
+                    $singular = rtrim($word, 's');
+                    $plural = $word . 's';
+
+                    $q->where(function ($subQ) use ($word, $singular, $plural) {
+                        $subQ->where('name', 'like', "%{$word}%")
+                            ->orWhere('name', 'like', "%{$singular}%")
+                            ->orWhere('name', 'like', "%{$plural}%")
+                            ->orWhereHas('brand', function ($b) use ($word, $singular, $plural) {
+                                $b->where('name', 'like', "%{$word}%")
+                                    ->orWhere('name', 'like', "%{$singular}%")
+                                    ->orWhere('name', 'like', "%{$plural}%");
+                            })
+                            ->orWhereHas('category', function ($c) use ($word, $singular, $plural) {
+                                $c->where('name', 'like', "%{$word}%")
+                                    ->orWhere('name', 'like', "%{$singular}%")
+                                    ->orWhere('name', 'like', "%{$plural}%");
+                            });
+                    });
+                }
+            });
+        }
+
+
         // Filtro de categorias
         if ($request->has('category')) {
             $selectedCategory = Category::where('slug', $request->category)->first();
@@ -39,7 +70,6 @@ class CatalogController extends Controller
             }
         }
 
-      
 
         // Filtro de promoções
         if ($request->has('promotions') && $request->promotions == 1) {

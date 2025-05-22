@@ -41,7 +41,7 @@
 /* Barra de pesquisa */
 .header-search {
     width: 75%;
-    margin-right: 1rem;
+    margin: 0;
 }
 
 .header-search-input {
@@ -74,10 +74,10 @@
     left: 100%;
     transform: translate(-50%, -50%);
     font-size: 0.6em;
-    padding: 0.35em 0.35em; /* Valores iguais para padding */
+    padding: 0.35em 0.35em;
     background-color: var(--bs-danger);
-    border-radius: 50%; /* Usando 50% para garantir um círculo perfeito */
-    min-width: 1.5em; /* Garante tamanho mínimo mesmo com poucos dígitos */
+    border-radius: 50%;
+    min-width: 1.5em;
     min-height: 1.5em;
     display: flex;
     align-items: center;
@@ -115,5 +115,198 @@
 
     .header-action-icon {
         font-size: 1.5rem;
+    }
+}
+
+/* NAVEGAÇÃO PRINCIPAL - Estilos exatos do original */
+
+#mainNavbar {
+    position: fixed;
+    top: 104px;
+    left: 0;
+    width: 100%;
+    z-index: 1035;
+    background-color: #212529;
+    padding: 0;
+}
+
+#mainNavbar .navbar-collapse {
+    display: flex !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Container - mantendo estilo Bootstrap original */
+#mainNavbar .container {
+    width: 100%;
+    padding: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Botão Toggler - cópia fiel do Bootstrap */
+#mainNavbar .navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: var(--bs-border-width) solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.25rem;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+#mainNavbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Menu - estilos idênticos aos originais */
+#mainNavbar .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+}
+
+#mainNavbar .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    margin-right: auto;
+}
+
+#mainNavbar .nav-item {
+    position: relative;
+}
+
+#mainNavbar .nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: color 0.15s ease-in-out;
+}
+
+#mainNavbar .nav-link:hover {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+#mainNavbar .nav-link.active {
+    color: #fff;
+}
+
+/* Área de contato - mantendo estilo original */
+#mainNavbar .d-flex {
+    display: flex !important;
+}
+
+#mainNavbar .navbar-text {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    color: #fff;
+}
+
+#mainNavbar .me-3 {
+    margin-right: 1rem !important;
+}
+
+#mainNavbar .me-2 {
+    margin-right: 0.5rem !important;
+}
+
+/* Responsividade - mantendo comportamento Bootstrap */
+@media (max-width: 991.98px) {
+    #mainNavbar .navbar-toggler {
+        display: block;
+    }
+
+    #mainNavbar .navbar-collapse {
+        display: none;
+    }
+
+    #mainNavbar .navbar-nav {
+        flex-direction: column;
+    }
+
+    #mainNavbar .d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #mainNavbar .me-3 {
+        margin-right: 0 !important;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* NOVAS REGRAS PARA TELAS MUITO PEQUENAS (<400px) */
+@media (max-width: 400px) {
+    /* Header - prioridade para o logo, elimina elementos da direita primeiro */
+    .header-actions-container {
+        display: none; /* Esconde toda a área de ações primeiro */
+    }
+
+    .header-brand-container {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-brand-text h1 {
+        font-size: 1.5rem; /* Reduz tamanho do título */
+    }
+
+    .header-brand-icon {
+        font-size: 1.5rem; /* Reduz tamanho do ícone */
+    }
+
+    /* Navigation - esconde itens e mostra apenas o toggler */
+    #mainNavbar .navbar-nav {
+        display: none;
+    }
+
+    #mainNavbar .d-flex {
+        display: none !important; /* Esconde contatos */
+    }
+
+    #mainNavbar .container {
+        justify-content: center;
+    }
+
+    #mainNavbar .navbar-toggler {
+        margin: 0 auto; /* Centraliza o botão do menu */
+    }
+
+    /* Quando o menu estiver expandido */
+    #mainNavbar .navbar-collapse.show {
+        display: block;
+    }
+
+    #mainNavbar .navbar-collapse.show .navbar-nav {
+        display: block;
+    }
+
+    #mainNavbar .navbar-collapse.show .d-flex {
+        display: flex !important;
+    }
+}
+
+/* REGRAS PROGRESSIVAS PARA TELAS MÉDIAS (entre 400px e 768px) */
+@media (min-width: 400px) and (max-width: 768px) {
+    /* Elimina elementos da direita progressivamente */
+    .header-search {
+        display: none; /* Primeiro a barra de pesquisa */
+    }
+
+    .header-action-icons {
+        justify-content: flex-end; /* Mantém apenas ícones essenciais */
+    }
+
+    /* Navigation - mantém apenas itens essenciais */
+    #mainNavbar .navbar-text {
+        display: none; /* Esconde contatos primeiro */
+    }
+
+    #mainNavbar .navbar-nav .nav-item:nth-last-child(-n + 2) {
+        display: none; /* Esconde os últimos 2 itens do menu */
     }
 }

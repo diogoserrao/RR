@@ -1,3 +1,4 @@
+
 /* Carrossel */
 .carousel-img {
     width: 100%;
@@ -38,7 +39,7 @@
     background: #fff;
     border-radius: 0.5rem;
     border: 1px solid #eee;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 .badge-destaque {
     position: absolute;
@@ -113,8 +114,38 @@
     cursor: pointer;
 }
 .btn-carrinho:hover {
-    background: #0d6efd;
+    background: #2c3e50;
     color: #fff;
+    border: none;
+}
+
+
+/* Adaptação para mobile (2x2) */
+@media (max-width: 768px) {
+    .col-destaque {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+    
+    .featured-img-wrapper {
+        height: 200px; /* Altura reduzida para mobile */
+    }
+    
+    .card-title-destaque {
+        font-size: 1rem; /* Tamanho de fonte menor */
+    }
+    
+    .card-text-destaque {
+        font-size: 0.85rem; /* Tamanho de fonte menor */
+    }
+    
+    .preco-novo {
+        font-size: 1rem; /* Tamanho de fonte menor */
+    }
+    
+    .row-destaques {
+        gap: 1rem 0; /* Espaçamento reduzido entre linhas */
+    }
 }
 
 /* Mais Vendidos */
@@ -148,7 +179,7 @@
     background: #fff;
     border-radius: 0.5rem;
     border: 1px solid #eee;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 .badge-mais-vendido {
     position: absolute;
@@ -200,55 +231,159 @@
     color: #198754;
 }
 
+
 /* Categorias */
+
+#categorias {
+    scroll-margin-top: 90px; /* ajusta conforme a altura do teu header */
+}
 .section-categorias {
+    padding: 4rem 0;
+    
     margin-bottom: 3rem;
 }
+
+.section-categorias .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, #2c3e50, #2c3e50a3);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
 .row-categorias {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem 0;
+   
+    justify-content: center;
 }
+
 .col-categoria {
     width: 100%;
-    max-width: 25%;
-    flex: 0 0 25%;
+    max-width: 20%;
+    flex: 0 0 20%;
     padding: 0 0.75rem;
     box-sizing: border-box;
 }
+
 .card-categoria {
-    background: none;
-    box-shadow: none;
-    border: none;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
     text-align: center;
+    transition: all 0.3s ease;
 }
+
+.card-categoria:hover {
+    transform: translateY(-10px);
+   
+}
+
 .categoria-link {
     text-decoration: none;
+    display: block;
 }
+
 .category-img-wrapper {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #eee;
+    border: 3px solid #f1f1f1;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0.5rem;
+    margin: 0 auto 1rem;
+    position: relative;
+    transition: all 0.3s ease;
 }
+
+
+
 .category-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 5px 0;
     display: block;
+    transition: transform 0.3s ease;
 }
+
+.card-categoria:hover .category-img {
+    transform: scale(1.05);
+}
+
 .categoria-nome {
     margin-top: 0.5rem;
-    color: #222;
-    font-size: 1.05rem;
-    font-weight: 500;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.card-categoria:hover .categoria-nome {
+    color: #2c3e50;
+}
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .col-categoria {
+        max-width: 25%;
+        flex: 0 0 25%;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-categoria {
+        max-width: 33.333%;
+        flex: 0 0 33.333%;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .col-categoria {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+    
+
+
+    .category-img-wrapper {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 /* Sobre Nós */
@@ -258,7 +393,7 @@
 .img-sobre {
     width: 100%;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Marcas */
@@ -286,14 +421,18 @@
 }
 
 @keyframes brand-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 /* Botões */
 .btn-ver-todos,
 .btn-sobre {
-    background: #0d6efd;
+    background: #2c3e50;
     color: #fff;
     border: none;
     padding: 0.75rem 2rem;

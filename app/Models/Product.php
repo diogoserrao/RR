@@ -33,4 +33,9 @@ class Product extends Model
     {
         return ($this->discount > 0 && $value > 0) ? $value : $this->price;
     }
+
+    public function images()
+    {
+        return $this->hasMany(\App\Models\ProductImage::class);
+    }
 }

@@ -54,7 +54,7 @@
                             <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
                             <span class="preco-novo"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
                         </div>
-                        <button class="btn-carrinho">
+                        <button class="btn-carrinho ">
                             <i class="fas fa-shopping-cart"></i>
                         </button>
                     </div>
@@ -63,7 +63,7 @@
         </div>
         @endforeach
     </div>
-    <div class="text-center mt-3">
+    <div class="text-center mt-3" style="margin-top: 1.5rem !important">
         <a href="{{ route('catalog.index', ['promotions' => 1]) }}" class="btn-ver-todos" style="background:#dc3545; border:none;">
             Promoções
         </a>
@@ -87,10 +87,14 @@
                         <p class="card-text-mais-vendido">{{ $product->short_description }}</p>
                         <div class="card-footer-mais-vendido">
                             <div>
-                                <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
-                                <span class="preco-novo preco-novo-vendido"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
+                                @if($product->discounted_price < $product->price)
+                                    <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
+                                    <span class="preco-novo preco-novo-vendido"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
+                                @else
+                                    <span class="preco-novo preco-novo-vendido"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
+                                @endif
                             </div>
-                            <button class="btn-carrinho" type="button">
+                            <button class="btn-carrinho " type="button">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -103,28 +107,33 @@
 </section>
 
 <!-- Categorias -->
-<section class="section-categorias">
-    <h2 class="section-title">Nossas Categorias</h2>
-    <div class="row-categorias">
-        @foreach($categories as $category)
-        <div class="col-categoria">
-            <div class="card-categoria">
-                <a href="{{ route('catalog.index', ['category' => $category->id]) }}" class="categoria-link">
-                    <div class="category-img-wrapper">
-                        <img src="{{ $category->image_url ?? 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' }}"
-                            class="category-img"
-                            alt="{{ $category->name }}">
-                    </div>
-                    <h5 class="categoria-nome">{{ $category->name }}</h5>
-                </a>
+<section class="section-categorias" id="categorias">
+    <div class="container">
+        <h2 class="section-title">Explore Nossas Categorias</h2>
+        <p class="section-subtitle">Descubra produtos incríveis em cada categoria</p>
+        
+        <div class="row-categorias">
+            @foreach($categories as $category)
+            <div class="col-categoria">
+                <div class="card-categoria">
+                    <a href="{{ route('catalog.index', ['category' => $category->slug]) }}" class="categoria-link">
+                        <div class="category-img-wrapper">
+                            <img src="{{ $category->image_url ?? 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' }}"
+                                class="category-img"
+                                alt="{{ $category->name }}">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <h5 class="categoria-nome">{{ $category->name }}</h5>
+                    </a>
+                </div>
             </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
 </section>
 
 <!-- Sobre Nós -->
-<section class="section-sobre bg-light p-4 rounded">
+<section class="section-sobre  p-4 rounded">
     <div class="row align-items-center">
         <div class="col-md-6">
             <h2>Sobre a ElectroHome</h2>
@@ -158,7 +167,7 @@
         // Duplicar o conteúdo para efeito infinito
         slider.innerHTML += slider.innerHTML;
         let scrollAmount = 0;
-        const speed = 0.5; // pixels por frame
+        const speed = 1; // pixels por frame
 
         function animate() {
             scrollAmount += speed;
