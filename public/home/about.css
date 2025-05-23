@@ -1,53 +1,70 @@
+/* About Section */
 .about-h2 {
     margin-bottom: 1.5rem;
     font-size: 2rem;
     font-weight: 600;
+    color: var(--primary-color);
 }
+
 .about-h3 {
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.2rem;
     font-weight: 500;
+    color: var(--primary-color);
 }
+
 .about-img-loja {
     width: 100%;
     border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow);
     display: block;
+    border: 1px solid var(--border-color);
 }
+
 .about-valores-list {
     list-style: none;
     padding-left: 0;
     margin-bottom: 0;
 }
+
 .about-valores-list li {
     margin-bottom: 0.75rem;
     font-size: 1rem;
     display: flex;
     align-items: center;
+    color: var(--text-color);
 }
+
 .about-icon {
-    color: #0d6efd;
+    color: var(--accent-color);
     margin-right: 0.5rem;
     font-size: 1.1rem;
 }
 
 /* Números */
 .about-numeros {
-    background: #f8f9fa;
+    background: var(--light-color);
     padding: 2.5rem 1rem;
     border-radius: 0.5rem;
     margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
 }
+
 .about-numero-item {
     text-align: center;
     margin-bottom: 1.5rem;
 }
+
 .about-numero {
     font-size: 2.5rem;
-    color: #0d6efd;
+    color: var(--accent-color);
     font-weight: 700;
     margin-bottom: 0.5rem;
+}
+
+.about-numero-desc {
+    color: var(--text-light);
 }
 
 /* Equipe */
@@ -56,55 +73,89 @@
     margin-bottom: 2.5rem;
     font-size: 2rem;
     font-weight: 600;
+    color: var(--primary-color);
 }
+
 .about-card-equipe {
-    background: #fff;
+    background: var(--white);
     border-radius: 0.5rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    border: none;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
     text-align: center;
     padding: 1.5rem 1rem 1rem 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
+    transition: var(--transition);
 }
+
+.about-card-equipe:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
 .about-equipe-img {
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 50%;
     margin: 0 auto 1rem auto;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: var(--shadow);
     display: block;
+    border: 3px solid var(--white);
 }
+
 .about-card-body {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 .about-card-title {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.25rem;
+    color: var(--primary-color);
 }
+
 .about-card-role {
     font-size: 0.98rem;
-    color: #6c757d;
+    color: var(--text-light);
     margin-bottom: 0.75rem;
 }
+
 .about-equipe-social {
     display: flex;
     gap: 0.5rem;
     justify-content: center;
 }
+
 .about-social-link {
-    color: #0d6efd;
+    color: var(--accent-color);
     font-size: 1.25rem;
-    transition: color 0.2s;
+    transition: var(--transition);
     text-decoration: none;
 }
+
 .about-social-link:hover {
-    color: #084298;
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-equipe-title {
+        font-size: 1.8rem;
+    }
+    
+    .about-equipe-img {
+        width: 120px;
+        height: 120px;
+    }
 }
