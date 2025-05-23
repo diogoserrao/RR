@@ -32,3 +32,7 @@ Route::post('/carrinho/limpar', [CartController::class, 'clear'])->name('cart.cl
 
 // Contacto
 Route::get('/contato', [ContactController::class, 'index'])->name('contact');
+
+Route::get('/carpintaria', function () {
+    return view('carpintaria');
+})->name('carpintaria');
