@@ -146,7 +146,7 @@
 
 .cart-total {
     font-weight: bold;
-    color: #222;
+    color: var(--text-color);
 }
 
 /* Buttons */

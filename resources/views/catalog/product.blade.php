@@ -20,7 +20,7 @@
         <ol class="breadcrumb-nav">
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('catalog.index') }}">Catálogo</a></li>
-            <li><a href="{{ route('catalog.category', $product->category->slug) }}">{{ $product->category->name }}</a></li>
+            <li><a href="{{ route('catalog.index', ['category' => $product->category->slug]) }}">{{ $product->category->name }}</a></li>
             <li class="active">{{ $product->name }}</li>
         </ol>
     </nav>

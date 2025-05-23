@@ -24,10 +24,10 @@
             <div class="footer-col">
                 <h5 class="footer-title">Links</h5>
                 <ul class="footer-list">
-                    <li><a href="{{ route('home') }}">Home</a></li>
+                    <li><a href="{{ route('home') }}">Início</a></li>
                     <li><a href="{{ route('about') }}">Sobre Nós</a></li>
                     <li><a href="{{ route('catalog.index') }}">Catálogo</a></li>
-                    <li><a href="{{ route('contact') }}">Contato</a></li>
+                    <li><a href="{{ route('contact') }}">Contacto</a></li>
                     <li><a href="#">Política de Privacidade</a></li>
                 </ul>
             </div>
@@ -35,20 +35,20 @@
             <div class="footer-col">
                 <h5 class="footer-title">Categorias</h5>
                 <ul class="footer-list">
-                    <li><a href="{{ route('catalog.index') }}">Frigorificos</a></li>
+                    <li><a href="{{ route('catalog.index') }}">Frigoríficos</a></li>
                     <li><a href="{{ route('catalog.index') }}">Fogões</a></li>
-                    <li><a href="{{ route('catalog.index') }}">Maquinas de lavar</a></li>
-                    <li><a href="{{ route('catalog.index') }}">Microondas</a></li>
+                    <li><a href="{{ route('catalog.index') }}">Máquinas de lavar</a></li>
+                    <li><a href="{{ route('catalog.index') }}">Micro-ondas</a></li>
                     <li><a href="{{ route('catalog.index') }}">Ar Condicionado</a></li>
                 </ul>
             </div>
-            <!-- ====== COLUNA: CONTATO ====== -->
+            <!-- ====== COLUNA: CONTACTO ====== -->
             <div class="footer-col">
-                <h5 class="footer-title">Contato</h5>
+                <h5 class="footer-title">Contactos</h5>
                 <address class="footer-address">
                     <p><i class="fas fa-map-marker-alt"></i> Rua Exemplo, 123 - Centro</p>
-                    <p><i class="fas fa-phone-alt"></i> (XX) XXXX-XXXX</p>
-                    <p><i class="fas fa-envelope"></i> contato@electrohome.com</p>
+                    <p><i class="fas fa-phone-alt"></i> 214 123 567</p>
+                    <p><i class="fas fa-envelope"></i> contacto@electrohome.com</p>
                     <p><i class="fas fa-clock"></i> Seg-Sex: 9:00 - 18:00</p>
                 </address>
             </div>

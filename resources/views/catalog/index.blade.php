@@ -9,13 +9,18 @@
 </head>
 
 @section('content')
-<div style="margin-top: 80px;"></div>
+<div style="margin-top: 30px;"></div>
 <div class="catalog-container">
 
     <!-- Mobile Filters Button -->
-    <button class="mobile-filter-btn" onclick="toggleFilters()">
-        <i class="fas fa-sliders-h"></i> Filtros
-    </button>
+    <div class="mobile-toolbar">
+        <button class="mobile-filter-btn" onclick="toggleFilters()">
+            <i class="fas fa-sliders-h"></i> Filtros
+        </button>
+        <a href="{{ route('home') }}" class="mobile-home-btn">
+            <i class="fas fa-home"></i> Início
+        </a>
+    </div>
 
     <!-- Main Catalog Structure -->
     <div class="catalog-layout">
@@ -23,7 +28,7 @@
         <!-- Left Column - Filters (Mobile overlay) -->
         <aside class="catalog-sidebar" id="filterSidebar">
             <div class="sidebar-header">
-                <h5>Filtrar Produtos</h5>
+
                 <button class="close-filters-btn" onclick="closeFilters()" type="button">
                     <i class="fas fa-times"></i> Fechar
                 </button>
@@ -127,7 +132,7 @@
 
                         <div class="filter-buttons">
                             <button type="submit" class="filter-apply-btn">Aplicar Filtros</button>
-                            <a href="{{ route('catalog.index') }}" class="filter-reset-btn">Limpar Tudo</a>
+                            <a href="{{ route('catalog.index') }}" class="filter-reset-btn" >Limpar Tudo</a>
                         </div>
                     </form>
                     <!-- FIM DA ALTERAÇÃO -->

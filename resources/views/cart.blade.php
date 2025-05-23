@@ -9,7 +9,7 @@
 </head>
 
 @section('content')
-<div style="margin-top: 80px;"></div>
+<div style="margin-top: 30px;"></div>
 
 <!-- ====== HEADER DO CARRINHO ====== -->
 <div class="cart-header">

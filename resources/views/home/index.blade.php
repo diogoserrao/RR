@@ -10,7 +10,7 @@
 @section('content')
 <!-- Carrossel de Destaques -->
 
-<div id="mainCarousel" class="carousel slide mb-5 mt-5" data-bs-ride="carousel">
+<div id="mainCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
     <div class="carousel-indicators">
         @foreach($featuredProducts as $i => $product)
         <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="{{ $i }}" @if($i==0) class="active" @endif></button>
@@ -41,25 +41,27 @@
     <div class="row-destaques">
         @foreach($featuredProducts as $product)
         <div class="col-destaque">
-            <div class="card-destaque">
-                <div class="badge-destaque">Promoção</div>
-                <div class="featured-img-wrapper">
-                    <img src="{{ $product->image_url }}" class="featured-img" alt="{{ $product->name }}">
-                </div>
-                <div class="card-body-destaque">
-                    <h5 class="card-title-destaque">{{ $product->name }}</h5>
-                    <p class="card-text-destaque">{{ $product->short_description }}</p>
-                    <div class="card-footer-destaque">
-                        <div>
-                            <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
-                            <span class="preco-novo"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
+            <a href="{{ route('catalog.product', ['category' => $product->category->slug, 'id' => $product->id]) }}" class="col-destaque-link">
+                <div class="card-destaque">
+                    <div class="badge-destaque">Promoção</div>
+                    <div class="featured-img-wrapper">
+                        <img src="{{ $product->image_url }}" class="featured-img" alt="{{ $product->name }}">
+                    </div>
+                    <div class="card-body-destaque">
+                        <h5 class="card-title-destaque">{{ $product->name }}</h5>
+                        <p class="card-text-destaque">{{ $product->short_description }}</p>
+                        <div class="card-footer-destaque">
+                            <div>
+                                <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
+                                <span class="preco-novo"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
+                            </div>
+                            <button class="btn-carrinho ">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
                         </div>
-                        <button class="btn-carrinho ">
-                            <i class="fas fa-shopping-cart"></i>
-                        </button>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
         @endforeach
     </div>
@@ -90,9 +92,9 @@
                                 @if($product->discounted_price < $product->price)
                                     <span class="preco-antigo"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
                                     <span class="preco-novo preco-novo-vendido"> {{ number_format($product->discounted_price, 2, ',', '.' )}} €</span>
-                                @else
+                                    @else
                                     <span class="preco-novo preco-novo-vendido"> {{ number_format($product->price, 2, ',', '.' )}} €</span>
-                                @endif
+                                    @endif
                             </div>
                             <button class="btn-carrinho " type="button">
                                 <i class="fas fa-shopping-cart"></i>
@@ -111,7 +113,7 @@
     <div class="container">
         <h2 class="section-title">Explore Nossas Categorias</h2>
         <p class="section-subtitle">Descubra produtos incríveis em cada categoria</p>
-        
+
         <div class="row-categorias">
             @foreach($categories as $category)
             <div class="col-categoria">
