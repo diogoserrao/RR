@@ -16,8 +16,8 @@
     <div class="contact-header-col contact-header-col-right">
         <nav aria-label="breadcrumb">
              <ol class="breadcrumb justify-content-md-end">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Início</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Sobre Nós</li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #e74c3c">Início</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Contactos</li>
             </ol>
         </nav>
     </div>
@@ -30,7 +30,7 @@
                 <h2 class="contact-section-title">Informações de Contacto</h2>
                 <div class="contact-info-block">
                     <h5><i class="fas fa-map-marker-alt contact-icon"></i> Morada</h5>
-                    <p>Rua Exemplo, 123 - Centro<br>Lisboa<br>Código Postal: 1000-000</p>
+                    <p>Estr. da Adega - Campanário<br>Código Postal: 9350-039</p>
                 </div>
                 <div class="contact-info-block">
                     <h5><i class="fas fa-phone-alt contact-icon"></i> Telefone</h5>

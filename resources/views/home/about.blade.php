@@ -21,7 +21,7 @@
     <div class="col-md-6">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb justify-content-md-end">
-                <li class="breadcrumb-item"><a href="{{ route('home') }}">Início</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #e74c3c">Início</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Sobre Nós</li>
             </ol>
         </nav>

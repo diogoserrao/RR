@@ -5,7 +5,6 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="{{ asset('cart.css') }}" rel="stylesheet">
-
 </head>
 
 @section('content')
@@ -16,8 +15,11 @@
     <div>
         <h1 class="cart-title">Carrinho de Compras</h1>
     </div>
-    <nav class="cart-breadcrumb">
-        <a href="{{ route('home') }}">Home</a> &gt; <span>Carrinho</span>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-md-end">
+            <li class="breadcrumb-item"><a href="{{ route('home') }}" style="color: #e74c3c">Início</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Carrinho</li>
+        </ol>
     </nav>
 </div>
 <!-- ====== /HEADER DO CARRINHO ====== -->
@@ -28,7 +30,7 @@
     <div class="cart-products">
         <div class="cart-card">
             <div class="cart-card-header">
-                <h5>Seus Itens ({{ count($cartItems) }})</h5>
+                <h5>Os seus Itens ({{ count($cartItems) }})</h5>
             </div>
             <div class="cart-card-body">
                 <table class="cart-table">
@@ -95,7 +97,7 @@
             <div class="cart-card-footer" style="padding-bottom:0;">
                 <!-- Botão para continuar comprando -->
                 <a href="{{ route('catalog.index') }}" class="cart-btn cart-btn-primary cart-btn-small" style="margin-bottom:16px;">
-                    <i class="fas fa-arrow-left"></i> Continuar Comprando
+                    <i class="fas fa-arrow-left"></i> Continuar a Comprar
                 </a>
                 <!-- Botão para limpar todo o carrinho -->
                 <form action="{{ route('cart.clear') }}" method="POST" style="display:inline;">
@@ -116,7 +118,7 @@
     <div class="cart-summary">
         <div class="cart-card">
             <div class="cart-card-header">
-                <h5>Resumo do Pedido</h5>
+                <h5>Resumo da Encomenda</h5>
             </div>
             <div class="cart-card-body">
                 <div class="cart-summary-row">
@@ -124,7 +126,7 @@
                     <span class="cart-summary-value"> {{ number_format($subtotal, 2, ',', '.') }} € </span>
                 </div>
                 <div class="cart-summary-row">
-                    <span>Frete</span>
+                    <span>Portes</span>
                     <span class="cart-summary-value" id="shippingCost">A calcular</span>
                 </div>
                 <div class="cart-summary-row">
@@ -142,21 +144,21 @@
                     <h6>Opções de Entrega</h6>
                     <label class="cart-radio">
                         <input type="radio" name="shippingOption" id="shippingStandard" checked>
-                        <span>Entrega Padrão</span>
+                        <span>Entrega Normal</span>
                         <span class="cart-summary-value"> 15,00 € </span>
                         <small>Entrega em 5-7 dias úteis</small>
                     </label>
                     <label class="cart-radio">
                         <input type="radio" name="shippingOption" id="shippingExpress">
-                        <span>Entrega Expressa</span>
+                        <span>Entrega Expresso</span>
                         <span class="cart-summary-value"> 30,00 € </span>
                         <small>Entrega em 2-3 dias úteis</small>
                     </label>
                     <label class="cart-radio">
                         <input type="radio" name="shippingOption" id="shippingFree">
-                        <span>Retirada na Loja</span>
+                        <span Levar à Loja></span>
                         <span class="cart-summary-value">Grátis</span>
-                        <small>Av. Paulista, 1000 - São Paulo</small>
+                        <small>Estr. da Adega, 9350-039 - Campanário</small>
                     </label>
                 </div>
                 <!-- ====== /OPÇÕES DE FRETE ====== -->
@@ -168,7 +170,7 @@
 
                 <!-- Métodos de Pagamento -->
                 <div class="cart-payment-methods">
-                    <small>Métodos de pagamento aceitos</small>
+                    <small>Métodos de pagamento aceites</small>
                     <div class="cart-payment-icons">
                         <i class="fab fa-cc-visa"></i>
                         <i class="fab fa-cc-mastercard"></i>
@@ -185,7 +187,7 @@
                 <i class="fas fa-lock"></i>
                 <div>
                     <h6>Compra 100% Segura</h6>
-                    <small>Seus dados estão protegidos</small>
+                    <small>Os seus dados estão protegidos</small>
                 </div>
                 <img src="https://via.placeholder.com/150x50?text=SSL+Seguro" alt="Site Seguro" class="cart-secure-img">
             </div>
@@ -198,7 +200,7 @@
 <!-- ====== CARRINHO VAZIO ====== -->
 <div class="cart-empty">
     <i class="fas fa-shopping-cart"></i>
-    <h3>Seu carrinho está vazio</h3>
+    <h3>O seu carrinho está vazio</h3>
     <p>Adicione produtos ao seu carrinho para continuar</p>
     <a href="{{ route('catalog.index') }}" class="cart-btn cart-btn-primary cart-btn-small">
         <i class="fas fa-arrow-left"></i> Voltar às Compras
@@ -216,27 +218,27 @@
         if (newQuantity < 1) newQuantity = 1;
         if (newQuantity > 99) newQuantity = 99;
         input.value = newQuantity;
-        // Aqui você faria uma requisição AJAX para atualizar no servidor
+        // Aqui pode fazer um pedido AJAX para atualizar no servidor
         updateTotals();
     }
 
     // ====== Remover item do carrinho ======
     function removeItem(itemId) {
-        if (confirm('Tem certeza que deseja remover este item do carrinho?')) {
-            // Aqui você faria uma requisição AJAX para remover o item
+        if (confirm('Tem a certeza que deseja remover este item do carrinho?')) {
+            // Aqui pode fazer um pedido AJAX para remover o item
             window.location.reload();
         }
     }
 
     // ====== Limpar carrinho ======
     function clearCart() {
-        if (confirm('Tem certeza que deseja limpar todo o carrinho?')) {
-            // Aqui você faria uma requisição AJAX para limpar o carrinho
+        if (confirm('Tem a certeza que deseja limpar todo o carrinho?')) {
+            // Aqui pode fazer um pedido AJAX para limpar o carrinho
             window.location.reload();
         }
     }
 
-    // ====== Aplicar cupom de desconto ======
+    // ====== Aplicar cupão de desconto ======
     document.getElementById('applyCoupon').addEventListener('click', function() {
         const couponCode = document.getElementById('couponCode').value;
         const couponMessage = document.getElementById('couponMessage');
@@ -246,21 +248,21 @@
             }
         };
         if (!couponCode) {
-            couponMessage.innerHTML = '<span class="cart-msg-error">Por favor, insira um código de cupom</span>';
+            couponMessage.innerHTML = '<span class="cart-msg-error">Por favor, insira um código de cupão</span>';
             return;
         }
         if (couponCode.toUpperCase() === 'ELECTRO10') {
-            couponMessage.innerHTML = '<span class="cart-msg-success">Cupom aplicado! 10% de desconto</span>';
+            couponMessage.innerHTML = '<span class="cart-msg-success">Cupão aplicado! 10% de desconto</span>';
             const discount = subtotal * 0.1;
             document.getElementById('discountValue').textContent = ` ${discount.toFixed(2).replace('.', ',')} € `;
             const total = subtotal - discount;
             document.getElementById('totalValue').textContent = ` ${total.toFixed(2).replace('.', ',')} € `;
         } else {
-            couponMessage.innerHTML = '<span class="cart-msg-error">Cupom inválido ou expirado</span>';
+            couponMessage.innerHTML = '<span class="cart-msg-error">Cupão inválido ou expirado</span>';
         }
     });
 
-    // ====== Atualizar totais quando muda o frete ======
+    // ====== Atualizar totais quando muda o envio ======
     document.querySelectorAll('input[name="shippingOption"]').forEach(radio => {
         radio.addEventListener('change', function() {
             updateTotals();
