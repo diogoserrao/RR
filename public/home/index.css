@@ -119,7 +119,6 @@
     border: none;
 }
 
-
 /* Adaptação para mobile (2x2) */
 @media (max-width: 768px) {
     .col-destaque {
@@ -148,7 +147,8 @@
     }
 }
 
-/* Mais Vendidos */
+
+/**************** Mais Vendidos ********************/
 
 .col-mais-vendido-link {
     display: block;
@@ -231,6 +231,30 @@
     color: #198754;
 }
 
+@media (max-width: 768px) {
+    .col-mais-vendido:nth-child(n+5) {
+        display: none;
+    }
+   .col-mais-vendido {
+        max-width: 50%;
+        flex: 0 0 50%;
+    }
+    .mais-vendido-img-wrapper {
+        height: 200px;
+    }
+    .card-title-mais-vendido {
+        font-size: 1rem;
+    }
+    .card-text-mais-vendido {
+        font-size: 0.85rem;
+    }
+    .preco-novo-vendido {
+        font-size: 1rem;
+    }
+    .row-mais-vendidos {
+        gap: 1rem 0;
+    }
+}
 
 /* Categorias */
 

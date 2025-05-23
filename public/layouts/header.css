@@ -1,312 +1,247 @@
-/* Header principal */
-.electrohome-header {
+/* Estilos alinhados com o tema fornecido */
+.header-container {
+    background: #2c3e50;
+    /* Cor sólida sem transparência */
+    color: white;
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    z-index: 1040;
-    background-color: var(--bs-primary);
-    color: white;
-    padding: 24px 0;
-}
-
-/* Container do logo e texto */
-.header-brand-container {
+    z-index: 1030;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-height: 104px;
+    /* Altura mínima garantida */
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
-.header-brand-icon {
-    font-size: 2rem;
-    margin-right: 1rem;
-}
-
-.header-brand-text h1 {
-    margin-bottom: 0;
-    line-height: 1;
-}
-
-.header-brand-text p {
-    margin-bottom: 0;
-    line-height: 1;
-}
-
-/* Container dos elementos à direita */
-.header-actions-container {
+.header-row > .col-md-3:last-child,
+.header-row > .col-auto:last-child {
+    padding-right: 86px !important; /* Ajuste conforme necessário */
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-/* Barra de pesquisa */
-.header-search {
-    width: 75%;
-    margin: 0;
+.action-icons {
+    margin-right: 0 !important; /* Remove espaço extra à direita */
 }
 
-.header-search-input {
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    padding: 0.375rem 0.75rem;
+.top-header {
+    padding: 15px 0;
+    background: #2c3e50;
 }
 
-.header-search-button {
-    background-color: #f8f9fa;
-    border: 1px solid #ced4da;
-    border-left: 0;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Ícones de ação */
-.header-action-icons {
-    position: relative;
+.logo-icon {
+    color: #adb5bd;
+    font-size: 2rem;
 }
 
-.header-action-icon {
+.logo-text h1 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
     color: white;
-    margin: 0 0.5rem;
-    font-size: 1.25rem;
+    margin: 0;
+    line-height: 1.2;
 }
 
-/* Badge do carrinho */
-.cart-badge {
+.logo-text p {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8rem;
+    color: #adb5bd;
+    margin: 0;
+    display: none;
+}
+
+.search-form {
+    position: relative;
+    flex-grow: 1;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-input {
+    border-radius: 50px;
+    padding: 8px 20px;
+    border: 1px solid #495057;
+    background-color: #343a40;
+    color: white;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: #adb5bd;
+}
+
+.search-input:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    background-color: rgb(255, 255, 255);
+    color: white;
+}
+
+.search-button {
     position: absolute;
-    top: 0;
-    left: 100%;
-    transform: translate(-50%, -50%);
-    font-size: 0.6em;
-    padding: 0.35em 0.35em;
-    background-color: var(--bs-danger);
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #0d6efd;
+    color: white;
+    border: none;
     border-radius: 50%;
-    min-width: 1.5em;
-    min-height: 1.5em;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .electrohome-header {
-        padding: 16px 0;
+.search-button:hover {
+    background: #0b5ed7;
+}
+
+.action-icons {
+    display: flex;
+    align-items: center;
+    
+    gap: 15px;
+}
+
+.action-icon {
+    color: white;
+    font-size: 1.3rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.action-icon:hover {
+    color: #adb5bd;
+    transform: translateY(-2px);
+}
+
+.cart-badge {
+    position: absolute;
+    top: -11px;
+    right: -9px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.mobile-search {
+    margin-top: 15px;
+    display: none;
+    padding: 0 15px 15px;
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0;
+    font-size: 1.5rem;
+    color: white;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    color: #adb5bd;
+}
+
+.main-navbar {
+    background: #212529 !important;
+    /* Cor sólida sem transparência */
+    box-shadow: none;
+    border-top: 1px solid #343a40;
+}
+
+.nav-link {
+    color: white !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0.25rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.navbar-contact {
+    color: #adb5bd;
+    font-size: 0.9rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.navbar-contact:hover {
+    color: white;
+}
+
+.navbar-contact i {
+    margin-right: 5px;
+    color: #adb5bd;
+}
+
+@media (min-width: 768px) {
+    .logo-text p {
+        display: block;
     }
 
-    .header-brand-container {
+    .mobile-search {
+        display: none !important;
+    }
+
+    .header-container {
         flex-direction: column;
-        align-items: flex-start;
+    }
+}
+
+@media (max-width: 767px) {
+    .desktop-search {
+        display: none !important;
     }
 
-    .header-actions-container {
-        flex-direction: column;
-        align-items: stretch;
-        margin-top: 10px;
+    .mobile-search {
+        display: block;
     }
 
-    .header-search {
-        width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
+    .action-icons {
+        margin-left: auto;
     }
 
-    .header-action-icons {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
+    .logo-container {
+        gap: 5px;
     }
 
-    .header-action-icon {
+    .logo-icon {
         font-size: 1.5rem;
     }
-}
 
-/* NAVEGAÇÃO PRINCIPAL - Estilos exatos do original */
-
-#mainNavbar {
-    position: fixed;
-    top: 104px;
-    left: 0;
-    width: 100%;
-    z-index: 1035;
-    background-color: #212529;
-    padding: 0;
-}
-
-#mainNavbar .navbar-collapse {
-    display: flex !important;
-    transition: none !important;
-    animation: none !important;
-}
-
-/* Container - mantendo estilo Bootstrap original */
-#mainNavbar .container {
-    width: 100%;
-    padding: 10px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-/* Botão Toggler - cópia fiel do Bootstrap */
-#mainNavbar .navbar-toggler {
-    padding: 0.25rem 0.75rem;
-    font-size: 1.25rem;
-    line-height: 1;
-    background-color: transparent;
-    border: var(--bs-border-width) solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.25rem;
-    color: rgba(255, 255, 255, 0.55);
-}
-
-#mainNavbar .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-/* Menu - estilos idênticos aos originais */
-#mainNavbar .navbar-collapse {
-    flex-basis: 100%;
-    flex-grow: 1;
-    align-items: center;
-}
-
-#mainNavbar .navbar-nav {
-    display: flex;
-    flex-direction: row;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-    margin-right: auto;
-}
-
-#mainNavbar .nav-item {
-    position: relative;
-}
-
-#mainNavbar .nav-link {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: rgba(255, 255, 255, 0.55);
-    text-decoration: none;
-    transition: color 0.15s ease-in-out;
-}
-
-#mainNavbar .nav-link:hover {
-    color: rgba(255, 255, 255, 0.75);
-}
-
-#mainNavbar .nav-link.active {
-    color: #fff;
-}
-
-/* Área de contato - mantendo estilo original */
-#mainNavbar .d-flex {
-    display: flex !important;
-}
-
-#mainNavbar .navbar-text {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    color: #fff;
-}
-
-#mainNavbar .me-3 {
-    margin-right: 1rem !important;
-}
-
-#mainNavbar .me-2 {
-    margin-right: 0.5rem !important;
-}
-
-/* Responsividade - mantendo comportamento Bootstrap */
-@media (max-width: 991.98px) {
-    #mainNavbar .navbar-toggler {
-        display: block;
+    .logo-text h1 {
+        font-size: 1.2rem;
     }
 
-    #mainNavbar .navbar-collapse {
+    .header-row {
+        flex-wrap: nowrap;
+    }
+
+    .navbar-contact {
         display: none;
-    }
-
-    #mainNavbar .navbar-nav {
-        flex-direction: column;
-    }
-
-    #mainNavbar .d-flex {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #mainNavbar .me-3 {
-        margin-right: 0 !important;
-        margin-bottom: 0.5rem;
-    }
-}
-
-/* NOVAS REGRAS PARA TELAS MUITO PEQUENAS (<400px) */
-@media (max-width: 400px) {
-    /* Header - prioridade para o logo, elimina elementos da direita primeiro */
-    .header-actions-container {
-        display: none; /* Esconde toda a área de ações primeiro */
-    }
-
-    .header-brand-container {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .header-brand-text h1 {
-        font-size: 1.5rem; /* Reduz tamanho do título */
-    }
-
-    .header-brand-icon {
-        font-size: 1.5rem; /* Reduz tamanho do ícone */
-    }
-
-    /* Navigation - esconde itens e mostra apenas o toggler */
-    #mainNavbar .navbar-nav {
-        display: none;
-    }
-
-    #mainNavbar .d-flex {
-        display: none !important; /* Esconde contatos */
-    }
-
-    #mainNavbar .container {
-        justify-content: center;
-    }
-
-    #mainNavbar .navbar-toggler {
-        margin: 0 auto; /* Centraliza o botão do menu */
-    }
-
-    /* Quando o menu estiver expandido */
-    #mainNavbar .navbar-collapse.show {
-        display: block;
-    }
-
-    #mainNavbar .navbar-collapse.show .navbar-nav {
-        display: block;
-    }
-
-    #mainNavbar .navbar-collapse.show .d-flex {
-        display: flex !important;
-    }
-}
-
-/* REGRAS PROGRESSIVAS PARA TELAS MÉDIAS (entre 400px e 768px) */
-@media (min-width: 400px) and (max-width: 768px) {
-    /* Elimina elementos da direita progressivamente */
-    .header-search {
-        display: none; /* Primeiro a barra de pesquisa */
-    }
-
-    .header-action-icons {
-        justify-content: flex-end; /* Mantém apenas ícones essenciais */
-    }
-
-    /* Navigation - mantém apenas itens essenciais */
-    #mainNavbar .navbar-text {
-        display: none; /* Esconde contatos primeiro */
-    }
-
-    #mainNavbar .navbar-nav .nav-item:nth-last-child(-n + 2) {
-        display: none; /* Esconde os últimos 2 itens do menu */
     }
 }
