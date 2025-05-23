@@ -204,7 +204,7 @@ class ProductSeeder extends Seeder
                 'spec_sheet_url' => null,
             ],
 
-            
+
             // Frigorífico (LG)
             [
                 'name' => 'Frigorífico Frost Free LG',
@@ -325,15 +325,85 @@ class ProductSeeder extends Seeder
                 'is_best_seller' => true,
                 'spec_sheet_url' => null,
             ],
+            [
+                'name' => 'Aspirador Vertical Bosch Unlimited',
+                'brand_id' => 4, // Bosch
+                'category_id' => 31, // Aspiradores
+                'short_description' => 'Aspirador sem fios potente e leve.',
+                'description' => 'Aspirador vertical Bosch Unlimited Série 6, autonomia até 30 min, filtro HEPA, fácil de limpar.',
+                'price' => 299.00,
+                'discounted_price' => 269.00,
+                'discount' => 10,
+                'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/MCSA03154712_BCS61113-power-image-2000x2000-02_def.webp',
+                'reviews_count' => 17,
+                'is_best_seller' => false,
+                'spec_sheet_url' => null,
+            ],
+            [
+                'name' => 'Chaleira Elétrica Bosch TWK8613P',
+                'brand_id' => 4,
+                'category_id' => 7, // Pequenos Eletrodomésticos
+                'short_description' => 'Chaleira com controlo de temperatura.',
+                'description' => 'Chaleira elétrica Bosch 1.5L, 2400W, base 360º, proteção contra sobreaquecimento.',
+                'price' => 69.99,
+                'discounted_price' => 59.99,
+                'discount' => 14,
+                'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/19850963_TWK8613P_STP_def.webp',
+                'reviews_count' => 8,
+                'is_best_seller' => false,
+                'spec_sheet_url' => null,
+            ],
+            [
+                'name' => 'Batedeira Bosch MFQ36460',
+                'brand_id' => 4,
+                'category_id' => 7, // Pequenos Eletrodomésticos
+                'short_description' => 'Batedeira potente e silenciosa.',
+                'description' => 'Batedeira Bosch 450W, 5 velocidades, função turbo, acessórios em aço inox.',
+                'price' => 49.90,
+                'discounted_price' => 44.90,
+                'discount' => 10,
+                'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/17572582_MFQ36460_STP_def.webp',
+                'reviews_count' => 12,
+                'is_best_seller' => true,
+                'spec_sheet_url' => null,
+            ],
+            [
+                'name' => 'Torradeira Bosch TAT6A913',
+                'brand_id' => 4,
+                'category_id' => 7, // Pequenos Eletrodomésticos
+                'short_description' => 'Torradeira com 2 ranhuras largas.',
+                'description' => 'Torradeira Bosch inox, 2 ranhuras, função descongelar, tabuleiro de migalhas.',
+                'price' => 39.99,
+                'discounted_price' => 34.99,
+                'discount' => 13,
+                'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/19850963_TAT6A913_STP_def.webp',
+                'reviews_count' => 10,
+                'is_best_seller' => false,
+                'spec_sheet_url' => null,
+            ],
+            [
+                'name' => 'Espremedor de Citrinos Bosch MCP3500N',
+                'brand_id' => 4,
+                'category_id' => 7, // Pequenos Eletrodomésticos
+                'short_description' => 'Espremedor prático para sumos frescos.',
+                'description' => 'Espremedor Bosch 25W, jarro de 800ml, peças laváveis na máquina.',
+                'price' => 24.90,
+                'discounted_price' => 21.90,
+                'discount' => 12,
+                'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/MCSA01872531_G9365_MCP3500N_1292462_def.webp',
+                'reviews_count' => 7,
+                'is_best_seller' => false,
+                'spec_sheet_url' => null,
+            ],
         ];
-        
+
         DB::table('products')->insert($products);
 
         // Exemplo: adicionar imagens extra ao Frigorífico Bosch Série 6
         $product = Product::where('name', 'Frigorífico Bosch Série 6')->first();
         if ($product) {
             ProductImage::create([
-                'product_id' =>$product->id,
+                'product_id' => $product->id,
                 'image_url' => 'https://media3.bsh-group.com/Product_Shots/1000x/12781972_KAD93AIEP_PGA2_def.webp',
                 'order' => 1
             ]);
