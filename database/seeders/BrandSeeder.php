@@ -25,7 +25,7 @@ class BrandSeeder extends Seeder
             ['name' => 'Smeg', 'logo_url' => 'https://res.cloudinary.com/yuppiechef/image/upload/f_auto/v1/pagebuilder/353/YC--Brand-Page-Banners---Smeg---Logo-1467363206'],
             ['name' => 'Indesit', 'logo_url' => 'https://wallpapers.com/images/hd/indesit-company-logo-y03nf0uwbia3j3ui.jpg'],
             ['name' => 'Hotpoint', 'logo_url' => 'https://pluspng.com/img-png/hotpoint-logo-png-hotpoint-logo-png-600.png'],
-            ['name' => 'Haier', 'logo_url' => 'https://logocharts.com/wp-content/uploads/2021/12/Haier-Logo.png'],
+            ['name' => 'Haier', 'logo_url' => 'https://th.bing.com/th/id/OIP.tElHpVnz5qK11jS3GVNzSQAAAA?rs=1&pid=ImgDetMain'],
             ['name' => 'Tefal', 'logo_url' => 'https://opcconnect.opcfoundation.org/wp-content/uploads/2019/06/Tefal_logo_logotype.png'],
             ['name' => 'Candy', 'logo_url' => 'https://www.pngitem.com/pimgs/m/109-1096178_candy-home-appliances-logo-hd-png-download.png'],
             ['name' => 'Starlux', 'logo_url' => 'https://th.bing.com/th/id/OIP.zTgzfdvZA9mebxGtiYbfrgAAAA?w=458&h=231&rs=1&pid=ImgDetMain'],
